@@ -1,0 +1,7 @@
+[user]
+	name = Rodolphe Blancho
+	email = rodolphe.blancho@gmail.com
+[credential]
+	helper = osxkeychain
+[http]
+	sslVerify = true

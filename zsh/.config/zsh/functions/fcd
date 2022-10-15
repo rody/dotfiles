@@ -1,0 +1,8 @@
+#
+# fcd  fzf enhanced cd
+#
+
+# fzf version of cd to dir 
+local dir
+dir=$(fd . ${1:-.} --type d 2> /dev/null | fzf +m) &&
+    cd "$dir"

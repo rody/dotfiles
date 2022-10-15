@@ -1,0 +1,57 @@
+# taps
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "d12frosted/emacs-plus"
+
+# packages
+brew "mas"       # mas-cli allows to install applications from the app store
+brew "stow"      # I use GNU Stow to manage my dotfiles
+brew "git"       # Git
+brew "grep"      # the original
+brew "ripgrep"   # ripgrep is a fast alternative to grep.
+brew "fd"        # fd is a fast altrnative to find.
+brew "fzf"       # fzf is a general-purpose command-line fuzzy finder.
+brew "jq"        # jq is a lightweight and flexible command-line JSON processor 
+brew "coreutils" # install GNU flavors and updated CLI tools
+brew "zsh"       # Ze shell
+brew "bat"       # a better cat
+brew "vim"       # Vim (updated)
+brew "neovim"    # new Vim
+brew "pwgen"     # password generator
+brew "pass"      # password manager
+brew "caddy"     # HTTP server and more
+brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-imagemagick", "with-native-comp", "with-xwidgets", "with-poll"]
+
+# casks
+cask "reaper", greedy: true  # Digital Audio Workstation (DAW)
+cask "blender"               # I always wanted to be a 3D artist
+
+cask "google-chrome", greedy: true
+cask "firefox", greedy: true
+cask "brave-browser", greedy: true
+cask "firefox-developer-edition", greedy: true
+cask "spotify"
+cask "slack"
+cask "zoom"
+cask "visual-studio-code"
+cask "kitty" # GPU accelerated terminal
+
+# fonts
+cask "font-roboto-mono"
+cask "font-roboto-mono-nerd-font"
+cask "font-inconsolata"
+cask "font-inconsolata-nerd-font"
+cask "font-victor-mono"
+cask "font-victor-mono-nerd-font"
+
+# app store apps
+mas "Affinity Designer", id: 824171161
+mas "Affinity Photo", id: 824183456
+mas "Capo", id: 696977615
+mas "DaisyDisk", id: 411643860
+mas "HazeOver", id: 430798174
+mas "iReal Pro", id: 409035833
+mas "Kindle", id: 405399194
+mas "Magnet", id: 441258766

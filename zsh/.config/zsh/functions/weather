@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Usage: weather <city>
+# Description: Get the wheather from https://wttr.in
+#
+function weather() {
+    # get all the args
+    city=$@
+    # subsitute spaces with '+' (url encode)
+    city=$(print -r -- ${city:gs/ /+})
+
+    if [ -z "$city" ]; then
+	city="Melbourne"
+    fi
+    curl "https://wttr.in/${city}?m"
+}

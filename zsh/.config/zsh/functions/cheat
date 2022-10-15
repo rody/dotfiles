@@ -1,0 +1,5 @@
+# Usage: cheat <topic>
+# Description: Show a cheatsheet from https://cht.sh
+#
+curl "https://cht.sh/$1"
+

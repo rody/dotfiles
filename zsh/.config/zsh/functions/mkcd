@@ -1,0 +1,4 @@
+# Usage: mkcd <dirname>
+# Description: Creates a folder and move into it in one command
+#
+mkdir -p "$@" && cd "$_";
