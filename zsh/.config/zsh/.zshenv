@@ -35,11 +35,13 @@ mkdir -p $ZSH_CACHE
 # Homebrew
 if [ -d "/opt/homebrew" ]
 then
-    export HOMEBREW_REPOSITORY="/opt/homebrew"
+    export HOMEBREW_PREFIX="/opt/homebrew"
 else
-    export HOMEBREW_REPOSITORY="/usr/local"
+    export HOMEBREW_PREFIX="/usr/local"
 fi
-export HOMEBREW_CELLAR="$HOMEBREW_REPOSITORY/Cellar"
+
+export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX";
+export HOMEBREW_CELLAR="$HOMEBREW_REPOSITORY";
 export HOMEBREW_CASKROOM="$HOMEBREW_REPOSITORY/Caskroom"
 
 # Pass

@@ -1,7 +1,9 @@
 
 bootTimeStart=$(gdate +%s%N 2>/dev/null || date +%s%N)
 
-export PATH="${HOMEBREW_REPOSITORY}"/bin:$PATH
+export PATH="${HOMEBREW_REPOSITORY}/bin:${HOMEBREW_REPOSITORY}/sbin${PATH+:$PATH}";
+export MANPATH="${HOMEBREW_REPOSITORY}/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="${HOMEBREW_REPOSITORY}/share/info:${INFOPATH:-}";
 
 # set zsh options
 source "$ZSH_CONFIG/options.zsh"
