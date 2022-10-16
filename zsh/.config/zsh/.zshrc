@@ -1,7 +1,7 @@
+export PATH="${HOMEBREW_REPOSITORY}/bin:${HOMEBREW_REPOSITORY}/sbin${PATH+:$PATH}";
 
 bootTimeStart=$(gdate +%s%N 2>/dev/null || date +%s%N)
 
-export PATH="${HOMEBREW_REPOSITORY}/bin:${HOMEBREW_REPOSITORY}/sbin${PATH+:$PATH}";
 export MANPATH="${HOMEBREW_REPOSITORY}/share/man${MANPATH+:$MANPATH}:";
 export INFOPATH="${HOMEBREW_REPOSITORY}/share/info:${INFOPATH:-}";
 
@@ -30,5 +30,5 @@ for file in $ZSH_CONFIG/functions/*; do
 done
 
 bootTimeEnd=$(gdate +%s%N 2>/dev/null || date +%s%N)
-bootTimeDuration=$((($bootTimeEnd - $bootTimeStart)/1000000))
+bootTimeDuration=$((($bootTimeEnd - $bootTimeStart) / 1000000))
 echo $bootTimeDuration ms overall boot duration
