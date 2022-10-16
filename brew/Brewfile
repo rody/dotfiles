@@ -22,6 +22,7 @@ brew "neovim"    # new Vim
 brew "pwgen"     # password generator
 brew "pass"      # password manager
 brew "caddy"     # HTTP server and more
+brew "xdg-ninja" # XDG linter
 brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-imagemagick", "with-native-comp", "with-xwidgets", "with-poll"]
 
 # casks
@@ -31,7 +32,6 @@ cask "blender"               # I always wanted to be a 3D artist
 cask "google-chrome", greedy: true
 cask "firefox", greedy: true
 cask "brave-browser", greedy: true
-cask "firefox-developer-edition", greedy: true
 cask "spotify"
 cask "slack"
 cask "zoom"
@@ -39,7 +39,6 @@ cask "visual-studio-code"
 cask "kitty" # GPU accelerated terminal
 
 # fonts
-cask "font-roboto-mono"
 cask "font-roboto-mono-nerd-font"
 cask "font-inconsolata"
 cask "font-inconsolata-nerd-font"
