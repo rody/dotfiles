@@ -10,3 +10,13 @@ alias http='caddy file-server'
 
 # wget - make it XDG aware
 alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+
+# ls
+alias ll="ls -al"
+
+# df
+alias df="df -h"
+
+# copy/rsync
+alias cpv='rsync -ah --progress'
+
