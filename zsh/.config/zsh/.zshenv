@@ -14,6 +14,7 @@
 
 export TERM='rxvt-256color'
 export WORKSPACE="$HOME/workspace"
+export DOTFILES="$HOME/.dotfiles"
 
 # XDG
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
@@ -43,6 +44,7 @@ fi
 export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX";
 export HOMEBREW_CELLAR="$HOMEBREW_REPOSITORY";
 export HOMEBREW_CASKROOM="$HOMEBREW_REPOSITORY/Caskroom"
+export HOMEBREW_BUNDLE_FILE="$DOTFILES/brew/Brewfile"
 
 # Pass
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
