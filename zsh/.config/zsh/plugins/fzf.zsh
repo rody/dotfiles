@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-echo 'fzf found'
 source "$HOMEBREW_REPOSITORY/opt/fzf/shell/completion.zsh"
 source "$HOMEBREW_REPOSITORY/opt/fzf/shell/key-bindings.zsh"
 
