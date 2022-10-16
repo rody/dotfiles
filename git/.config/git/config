@@ -7,3 +7,5 @@
 	sslVerify = true
 [push]
 	autoSetupRemote = true
+[alias]
+	st = status
