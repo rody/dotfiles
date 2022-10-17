@@ -114,3 +114,9 @@ export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 
 # gnupg
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+
+# sfdx
+export SFDX_DISABLE_TELEMETRY=true
+export SFDX_DISABLE_AUTOUPDATE=true
+export SFDX_DOMAIN_RETRY=0
+export SFDX_IMPROVED_CODE_COVERAGE=true
