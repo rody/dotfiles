@@ -85,13 +85,13 @@ export FZF_DEFAULT_OPTS="--height 60% \
 --marker ⇒"
 
 # golang
-export GOPATH="$WORKSPACE/go"
-export GOBIN="$WORKSPACE/go/bin"
+export GOPATH="$XDG_DATA_HOME/go"
+export GOBIN="$XDG_DATA_HOME/go/bin"
 export GOCACHE="$XDG_CACHE_HOME/go-build"
 
 # Rust & Cargo
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 
 # Ruby
 export GEM_HOME="$XDG_DATA_HOME/gem"

@@ -1,4 +1,4 @@
-export PATH="${HOMEBREW_REPOSITORY}/bin:${HOMEBREW_REPOSITORY}/sbin${PATH+:$PATH}";
+export PATH="${GOBIN}:${HOMEBREW_REPOSITORY}/bin:${HOMEBREW_REPOSITORY}/sbin${PATH+:$PATH}";
 
 bootTimeStart=$(gdate +%s%N 2>/dev/null || date +%s%N)
 

@@ -23,7 +23,9 @@ brew "pwgen"     # password generator
 brew "pass"      # password manager
 brew "caddy"     # HTTP server and more
 brew "xdg-ninja" # XDG linter
+brew "go"        # Golang
 brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-imagemagick", "with-native-comp", "with-xwidgets", "with-poll"]
+brew "cmake"     # required to build vterm
 
 # casks
 cask "reaper", greedy: true  # Digital Audio Workstation (DAW)
