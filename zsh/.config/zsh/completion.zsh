@@ -1,4 +1,9 @@
 #!/usr/bin/zsh
+#
+#
+if [[ -d "$HOME/Library/Caches/sfdx/autocomplete/functions/zsh" ]]; then
+	fpath=( "$HOME/Library/Caches/sfdx/autocomplete/functions/zsh" $fpath);
+fi
 
 autoload -U compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"

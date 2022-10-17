@@ -24,7 +24,6 @@ source "$ZSH_CONFIG/completion.zsh"
 source "$ZSH_CONFIG/plugins/fzf.zsh"
 
 # configure additional functions
-# FIXME: use fpath and autoload instead, see https://unix.stackexchange.com/a/33898
 for file in $ZSH_CONFIG/functions/*; do
     autoload -Uz "$file"
 done
