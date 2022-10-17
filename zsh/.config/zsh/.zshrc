@@ -30,4 +30,5 @@ done
 
 bootTimeEnd=$(gdate +%s%N 2>/dev/null || date +%s%N)
 bootTimeDuration=$((($bootTimeEnd - $bootTimeStart) / 1000000))
-echo $bootTimeDuration ms overall boot duration
+# uncoment to print the startup time
+# echo $bootTimeDuration ms overall boot duration
