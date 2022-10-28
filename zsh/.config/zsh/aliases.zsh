@@ -20,3 +20,7 @@ alias df="df -h"
 # copy/rsync
 alias cpv='rsync -ah --progress'
 
+# sfdx
+alias sfopen='sfdx force:org:open'
+alias sforgs='sfdx force:org:list --skipconnectionstatus'
+alias sfdisplay='sfdx force:org:display --verbose'
