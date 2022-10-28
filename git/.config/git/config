@@ -8,4 +8,14 @@
 [push]
 	autoSetupRemote = true
 [alias]
-	st = status
+	st = status -sbu
+	optimize = gc --prune=now --aggressive
+	lll = log --oneline --pretty=format:'• %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'
+	ll = log --oneline --pretty=format:'• %Cred%h%Creset - %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'
+	lg = log --graph --all --oneline --pretty=format:'• %Cred%h%Creset - %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'
+[github]
+	user = rody
+[init]
+	defaultBranch = main
+[color]
+	ui = true
