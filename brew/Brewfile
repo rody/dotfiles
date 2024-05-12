@@ -14,6 +14,7 @@ brew "ripgrep"   # ripgrep is a fast alternative to grep.
 brew "fd"        # fd is a fast altrnative to find.
 brew "fzf"       # fzf is a general-purpose command-line fuzzy finder.
 brew "jq"        # jq is a lightweight and flexible command-line JSON processor 
+brew "yq"        # like jq but supports YAML, JSON and XML 
 brew "coreutils" # install GNU flavors and updated CLI tools
 brew "zsh"       # Ze shell
 brew "bat"       # a better cat
@@ -24,9 +25,19 @@ brew "pass"      # password manager
 brew "caddy"     # HTTP server and more
 brew "xdg-ninja" # XDG linter
 brew "go"        # Golang
+brew "node"      # NodeJS
 brew "d12frosted/emacs-plus/emacs-plus@29", args: ["with-imagemagick", "with-native-comp", "with-xwidgets", "with-poll"]
 brew "cmake"     # required to build vterm
+brew "mpv"       # video player (I use it with emacs and elfeed)
+brew "hammerspoon" 
+brew "rustup"    # Rust toolchain
 
+# docker related/alternative
+brew "podman"    # just the CLI, not the daemon
+brew "minikube"  # local kubernetes
+brew "kubectl"   # kubernetes CLI
+
+ 
 # casks
 cask "reaper", greedy: true  # Digital Audio Workstation (DAW)
 cask "blender"               # I always wanted to be a 3D artist
@@ -39,6 +50,7 @@ cask "slack"
 cask "zoom"
 cask "visual-studio-code"
 cask "kitty" # GPU accelerated terminal
+cask "openscad"
 
 # fonts
 cask "font-roboto-mono-nerd-font"
