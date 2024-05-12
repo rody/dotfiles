@@ -1,0 +1,155 @@
+;; Tempel templates
+
+fundamental-mode
+
+(today (format-time-string "%d-%m-%Y"))
+(NOW (format-time-string "<%Y-%0m-%0d %a %H:%0M>"))
+(yesterday (format-time-string "<%Y-%0m-%0d %a>" (time-subtract nil (* 24 60 60))))
+(tomorrow (format-time-string "<%Y-%0m-%0d %a>" (time-add nil (* 24 60 60))))
+
+; prog ---------------------------------------------------------------------------
+prog-mode
+
+(fixme (if (derived-mode-p 'emacs-lisp-mode) ";; " comment-start) "FIXME: ")
+(todo (if (derived-mode-p 'emacs-lisp-mode) ";; " comment-start) "TODO: ")
+(bug (if (derived-mode-p 'emacs-lisp-mode) ";; " comment-start) "BUG: ")
+(hack (if (derived-mode-p 'emacs-lisp-mode) ";; " comment-start) "HACK: ")
+
+(box (if (derived-mode-p 'emacs-lisp-mode) ";; " comment-start) "┌─" (make-string (length str) ?─) "─┐" n>
+     (if (derived-mode-p 'emacs-lisp-mode) ";; " comment-start) "│ " (s str)                       " │" n>
+     (if (derived-mode-p 'emacs-lisp-mode) ";; " comment-start) "└─" (make-string (length str) ?─) "─┘" n>)
+(abox "+-" (make-string (length str) ?-) "-+" n
+      "| " (s str)                       " |" n
+      "+-" (make-string (length str) ?-) "-+" n)
+(cut "--8<---------------cut here---------------start------------->8---" n r n
+     "--8<---------------cut here---------------end--------------->8---" n)
+
+(sep (if (derived-mode-p 'emacs-lisp-mode) ";; " comment-start) " " (s str) " " (make-string (- 79 (length str)) ?-) n q)
+
+; lisp ---------------------------------------------------------------------------
+lisp-mode emacs-lisp-mode ;; Specify multiple modes
+
+(lambda "(lambda (" p ")" n> r> ")")x
+
+; emacs-lisp ---------------------------------------------------------------------
+emacs-lisp-mode
+
+(autoload ";;;###autoload")
+(lb ";;; -*- lexical-binding: t; -*-" n)
+(header ";;; " (file-name-nondirectory (or (buffer-file-name) (buffer-name)))
+        " -- " p " -*- lexical-binding: t -*-" n
+        ";;; Commentary:" n ";;; Code:" n n q)
+(provide "(provide '" (file-name-base (or (buffer-file-name) (buffer-name))) ")" n
+         ";;; " (file-name-nondirectory (or (buffer-file-name) (buffer-name)))
+         " ends here" n q)
+
+; text ---------------------------------------------------------------------------
+text-mode
+
+(box "┌─" (make-string (length str) ?─) "─┐" n
+     "│ " (s str)                       " │" n
+     "└─" (make-string (length str) ?─) "─┘" n)
+(abox "+-" (make-string (length str) ?-) "-+" n
+      "| " (s str)                       " |" n
+      "+-" (make-string (length str) ?-) "-+" n)
+(cut "--8<---------------cut here---------------start------------->8---" n r n
+     "--8<---------------cut here---------------end--------------->8---" n)
+
+; org ----------------------------------------------------------------------------
+org-mode
+
+(caption "#+caption: ")
+(begin "#+begin_" (s name) n> r> n "#+end_" name)
+(quote "#+begin_quote" n> r> n "#+end_quote")
+(sidenote "#+begin_sidenote" n> r> n "#+end_sidenote")
+(marginnote "#+begin_marginnote" n> r> n "#+end_marginnote")
+(example "#+begin_example" n> r> n "#+end_example")
+(center "#+begin_center" n> r> n "#+end_center")
+(ascii "#+begin_export ascii" n> r> n "#+end_export")
+(html "#+begin_export html" n> r> n "#+end_export")
+(latex "#+begin_export latex" n> r> n "#+end_export")
+(comment "#+begin_comment" n> r> n "#+end_comment")
+(verse "#+begin_verse" n> r> n "#+end_verse")
+(src "#+begin_src " q n r n "#+end_src")
+(gnuplot "#+begin_src gnuplot :var data=" (p "table") " :file " (p "plot.png") n r n "#+end_src" :post (org-edit-src-code))
+(elisp "#+begin_src emacs-lisp" n r n "#+end_src" :post (org-edit-src-code))
+(inlsrc "src_" p "{" q "}")
+(title "#+title: " p n
+       "#+author: Rodolphe Blancho" n
+       "#+date: " (format-time-string "%d-%m-%Y") n q)
+
+; golang -------------------------------------------------------------------------
+go-mode go-ts-mode
+
+(imp "import "  q)
+(impn "import (" n> q n ")")
+
+(main "func main() {" n> q n "}")
+(iferr "if err != nil {" n > "return err" > n "}" > n> n q)
+
+; json ---------------------------------------------------------------------------
+json-mode json-ts-mode
+
+(npmpack "{" n>
+         "  \"name\": \"" q "\"," n>
+         "  \"description\": \"\"," n>
+         "  \"version\": \"0.0.1\"" n>
+         "}")
+
+; html ---------------------------------------------------------------------------
+html-mode mhtml-mode
+
+(doctype.html5 "<!DOCTYPE html>" n)
+(html "<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>" p "</title>
+</head>
+<body>"
+n> q n
+"</body>
+</html>")
+(script.javascript "<script type=\"text/javascript\">" q "</script>")
+(script.javascript-src "<script type=\"text/javascript\" src=\"" q "\"></script>")
+(script.module "<script type=\"module\">" q "</script>")
+(script.module-src "<script type=\"module\" src=\"" q "\"></script>")
+(script.importmap "<script type=\"importmap\">" n> "{" n> "\"imports\": {" n> "}" n> "}" n> "</script>")
+(link.stylesheet-css "<link rel=\"stylesheet\" href=\"" q "\" type=\"text/css\" media=\"screen\" />")
+
+; apex -------------------------------------------------------------------
+apex-ts-mode
+
+(db "System.debug(" q ");")
+(class "public class " p " {" n> q n "}")
+(queue "public class " p " implements Queueable {" n n>
+       "    public void execute(QueueableContext context) {" n> q n "}" n "}")
+(batch "public class " p " implements Database.Batchable<" (s sobject) "> {" n n>
+       "    public List<" sobject "> start(Database.BatchableContext ctx) {" n> q n "}" n n>
+       "    public void execute(Database.BatchableContext ctx, List<" sobject "> scope) {" n> "}" n n>
+       "    public void finish(Database.BatchableContext ctx) {}" n
+       "}")
+(trigger "trigger " p " on " p " (before insert) {" n> q n"}")
+(rest "@RestResource(urlMapping='" p "')" q)
+(testm "@IsTest" n "static void test" p "() {" n> q n>"}")
+
+; json --------------------------------------------------------------------------
+json-ts-mode json-mode
+
+(sfdxproj "{
+    \"packageDirectories\": [
+    {
+      \"path\": \"" q "\",
+      \"default\": true
+    }
+  ],
+  \"namespace\": \"\",
+  \"sfdcLoginUrl\": \"https://login.salesforce.com\",
+  \"sourceApiVersion\": \"57.0\"
+}")
+;; Local Variables:
+;; mode: lisp-data
+;; outline-regexp: "[a-z]"
+;; End:
