@@ -22,5 +22,11 @@ alias cpv='rsync -ah --progress'
 
 # sfdx
 alias sfopen='sfdx force:org:open'
-alias sforgs='sfdx force:org:list --skipconnectionstatus'
+alias sforgs='sfdx org list --skip-connection-status'
 alias sfdisplay='sfdx force:org:display --verbose'
+alias sfpush='sfdx force:source:push'
+alias sfpull='sfdx force:source:pull'
+alias sfcreate='sfdx force:org:create'
+
+# emacs
+alias em="emacsclient -t -a ''"

@@ -4,10 +4,6 @@
 # .zshenv
 #
 
-# ~/.zshenv should only be a one-liner that sources this file
-# echo ". ~/.config/zsh/.zshenv" > ~/.zshenv
-
-#
 # most of the exports are here to make the system XDG compliant.
 # I use `xdg-ninja` (brew install xdg-ninja) to help identify the missing
 # configuration.
@@ -23,14 +19,35 @@ export XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 export XDG_STATE_HOME=${XDG_STATE_HOME:-~/.local/state}
 export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-~/.xdg}
 
+# macOS
+if [[ "$OSTYPE" == darwin* ]]; then
+  export XDG_DESKTOP_DIR=${XDG_DESKTOP_DIR:-$HOME/Desktop}
+  export XDG_DOCUMENTS_DIR=${XDG_DOCUMENTS_DIR:-$HOME/Documents}
+  export XDG_DOWNLOAD_DIR=${XDG_DOWNLOAD_DIR:-$HOME/Downloads}
+  export XDG_MUSIC_DIR=${XDG_MUSIC_DIR:-$HOME/Music}
+  export XDG_PICTURES_DIR=${XDG_PICTURES_DIR:-$HOME/Pictures}
+  export XDG_VIDEOS_DIR=${XDG_VIDEOS_DIR:-$HOME/Videos}
+  export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects}
+
+  if [[ -d /opt/homebrew ]]; then
+    export HOMEBREW_PREFIX=/opt/homebrew
+  else
+    export HOMEBREW_PREFIX=/usr/local
+  fi
+  export BROWSER='open'
+fi
+
+export SHELL_SESSIONS_DISABLE=1
+
 # editor
 export EDITOR="nvim"
 export VISUAL="nvim"
 
 # Zsh
-export ZDOTDIR=${ZDOTDIR:-~/.config/zsh}
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZSH_CONFIG="$ZDOTDIR"
 export ZSH_CACHE="$XDG_CACHE_HOME/zsh"
+
 mkdir -p $ZSH_CACHE
 
 # Homebrew
@@ -52,6 +69,7 @@ export PASSWORD_STORE_DIR="$XDG_DATA_HOME/pass"
 # npm
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export NPM_GLOBAL_ROOT="$HOMEBREW_PREFIX/lib/node_modules"
 
 # nodejs
 export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
@@ -90,8 +108,9 @@ export GOBIN="$XDG_DATA_HOME/go/bin"
 export GOCACHE="$XDG_CACHE_HOME/go-build"
 
 # Rust & Cargo
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+# export CARGO_HOME="$XDG_DATA_HOME/cargo"
+# export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$HOME/.cargo"
 
 # Ruby
 export GEM_HOME="$XDG_DATA_HOME/gem"
@@ -100,7 +119,7 @@ export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
 # Ruby bundler
 export BUNDLE_USER_CONFIG="$XDG_CONFIG_HOME/bundle"
 export BUNDLE_USER_CACHE="$XDG_CACHE_HOME/bundle"
-export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"   
+export BUNDLE_USER_PLUGIN="$XDG_DATA_HOME/bundle"
 
 # less
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
@@ -115,8 +134,18 @@ export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 # gnupg
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 
-# sfdx
-export SFDX_DISABLE_TELEMETRY=true
-export SFDX_DISABLE_AUTOUPDATE=true
-export SFDX_DOMAIN_RETRY=0
-export SFDX_IMPROVED_CODE_COVERAGE=true
+# sf cli
+export SF_DISABLE_TELEMETRY=true
+export SF_DISABLE_AUTOUPDATE=true
+export SF_DOMAIN_RETRY=0
+export SF_IMPROVED_CODE_COVERAGE=true
+
+# zig
+export ZIG_HOME="$HOME/workspaces/zig/zig-0.12.0"
+
+# Postgres utilities (install via `brew install libpq`)
+export LIBPQ_PATH="$HOMEBREW_REPOSITORY"/opt/libpq/bin
+
+export MANPATH="${HOMEBREW_REPOSITORY}/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="${HOMEBREW_REPOSITORY}/share/info:${INFOPATH:-}";
+. "$HOME/.cargo/env"
