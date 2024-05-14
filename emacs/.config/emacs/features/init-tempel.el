@@ -27,7 +27,8 @@
          (text-mode . tempel-setup-capf)
          (eglot-managed-mode . tempel-setup-capf))
   :custom
-   (tempel-trigger-prefix ">"))
+  (tempel-path (concat user-emacs-directory "/templates"))
+  (tempel-trigger-prefix ">"))
 
 (provide 'init-tempel)
 ;;; init-tempel.el ends here

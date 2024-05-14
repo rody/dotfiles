@@ -1,7 +1,16 @@
-;;; -*- lexical-binding: t; -*-
+;;; init-project.el -- Project configuration -*- lexical-binding: t -*-
+;;; Commentary:
+;;; Code:
+
+(use-package consult-project-extra
+  :ensure t
+  :bind ("C-c f" . consult-project-extra-find))
 
 (use-package project
   :ensure nil
+  :bind (:map project-prefix-map
+              ("m"  . magit-project-status))
+
   :commands (project-dired
              project-shell
              project-eshell
@@ -29,6 +38,7 @@
              project-or-external-find-regexp
              project-remember-projects-under
              project-execute-extended-command
-             project-display-buffer-other-frame)
-  :custom
-  (project-list-file (concat rody-emacs-state-directory "projects")))
+             project-display-buffer-other-frame))
+
+(provide 'init-project)
+;;; init-project.el ends here

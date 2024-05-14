@@ -4,13 +4,14 @@
 
 (use-package flymake
   :ensure t
+;;  :pin melpa
   :hook (prog-mode . flymake-mode)
   :bind (:map flymake-mode-map
               ("C-c ! n" . flymake-goto-next-error)
               ("C-c ! p" . flymake-goto-previous-error)
               ("C-c ! l" . flymake-show-buffer-diagnostics))
   :init
-  (setq flymake-show-diagnostics-at-end-of-line t)
+  (setq flymake-show-diagnostics-at-end-of-line 'short)
   (add-to-list 'display-buffer-alist
                '("\\*flymake diagnostics" (display-buffer-reuse-window display-buffer-in-side-window)
                  (side . bottom)

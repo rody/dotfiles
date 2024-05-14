@@ -37,10 +37,13 @@
   :hook ((go-ts-mode . rody--eglot-import-and-format-on-save)
          (rust-ts-mode . rody--eglot-format-on-save)
          (json-ts-mode . rody--eglot-format-on-save)
-         (scad-mode . eglot-ensure))
+         (scad-mode . eglot-ensure)
+         (templ-ts-mode . eglot-ensure))
   :config
   (add-to-list 'eglot-server-programs
-               '(terraform-mode . ("terraform-ls" "serve"))))
+               '(terraform-mode . ("terraform-ls" "serve")))
+  (add-to-list 'eglot-server-programs
+               '(templ-ts-mode . ("templ" "lsp"))))
 
 (use-package consult-eglot
   :ensure t
