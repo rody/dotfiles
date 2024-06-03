@@ -1,1 +1,4 @@
 .DS_Store
+emacs/.config/emacs/elpa/
+emacs/.config/emacs/share/
+emacs/.config/emacs/tree-sitter
