@@ -69,6 +69,7 @@
 (rody--require-with-time 'init-indent-bars)
 (rody--require-with-time 'init-spelling)
 (rody--require-with-time 'init-calc)
+(rody--require-with-time 'init-dired)
 
 ;; inputs
 (rody--require-with-time 'init-meow)
@@ -100,6 +101,10 @@
 (rody--require-with-time 'init-jq)
 (rody--require-with-time 'init-rust)
 (rody--require-with-time 'init-openscad)
+(rody--require-with-time 'init-plantuml)
+
+;; misc
+(rody--require-with-time 'init-icons)
 
 (provide 'init-features)
 ;;; init-features.el ends here

@@ -10,8 +10,11 @@
               ("C-c ! n" . flymake-goto-next-error)
               ("C-c ! p" . flymake-goto-previous-error)
               ("C-c ! l" . flymake-show-buffer-diagnostics))
+  :custom
+  ;; wait 5 seconds after I stop typing to run flymake
+  (flymake-no-changes-timeout 5)
+  (flymake-show-diagnostics-at-end-of-line nil) ;; other option: 'short
   :init
-  (setq flymake-show-diagnostics-at-end-of-line 'short)
   (add-to-list 'display-buffer-alist
                '("\\*flymake diagnostics" (display-buffer-reuse-window display-buffer-in-side-window)
                  (side . bottom)

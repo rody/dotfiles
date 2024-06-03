@@ -74,15 +74,35 @@
 
   :config
   ;; TODO see https://blog.d46.us/advanced-emacs-startup/ to make the language load faster
+  (setq org-plantuml-exec-mode 'plantuml)
   (org-babel-do-load-languages
    'org-babel-load-languages
    '(
-     (shell . t)
-     (emacs-lisp . t)
      (latex . t)
      (js . t)
+     (plantuml . t)
+     (jq . t)
      )))
 
+(use-package ob-emacs-lisp
+  :ensure nil
+  :after org
+  :commands
+  (org-babel-execute:elisp
+   org-babel-expand-body:elisp
+
+   org-babel-execute:emacs-lisp
+   org-babel-expand-body:emacs-lisp))
+
+(use-package ob-shell
+  :after org
+  :ensure nil
+  :commands
+  (org-babel-execute:sh
+   org-babel-expand-body:sh
+
+   org-babel-execute:bash
+   org-babel-expand-body:bash))
 
 (use-package ox-epub
   :ensure t
