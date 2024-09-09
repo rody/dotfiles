@@ -12,8 +12,5 @@
   :ensure nil
   :hook (prog-mode . electric-pair-mode))
 
-(use-package ansi-color
-  :hook (compilation-filter . ansi-color-compilation-filter))
-
 (provide 'init-prog)
 ;;; init-prog.el ends here

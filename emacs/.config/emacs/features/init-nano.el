@@ -5,9 +5,8 @@
 (use-package nano
   :ensure nil
   :no-require t
-  :load-path "~/workspaces/emacs/nano-emacs"
   ;; uncoment for emacs 30+
-  ;;:vc (:fetcher github :repo "rougier/nano-emacs")
+  :vc (:url "https://github.com/rougier/nano-emacs")
   :init
   (defface bookmark-menu-heading
     `((((class color) (min-colors 89)) (:foreground "#000000")))
@@ -35,6 +34,9 @@
   (require 'nano-theme)
   (require 'nano-theme-dark)
   (require 'nano-theme-light)
+
+  (setq nano-font-family-monospaced "JetBrainsMono Nerd Font Mono")
+  (setq nano-font-family-proportional "JetBrainsMono Nerd Font Propo")
   (nano-theme-set-dark)
   (call-interactively 'nano-refresh-theme)
   (set-face 'cursor 'nano-face-tag-faded)

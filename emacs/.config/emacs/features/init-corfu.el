@@ -11,7 +11,7 @@
   (corfu-cycle t)
   (corfu-echo-documentation t)
   (corfu-scroll-margin 5)
-  :init
+  :config
   (global-corfu-mode)
   (corfu-popupinfo-mode)
   )

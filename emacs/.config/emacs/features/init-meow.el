@@ -81,7 +81,7 @@
      '("O" . meow-to-block)
      '("p" . meow-yank)
      '("P" . meow-yank-pop)
-     '("q" . meow-quit)
+     ;; '("q" . meow-quit)
      '("Q" . meow-goto-line)
      '("r" . meow-replace)
      '("R" . meow-swap-grab)
@@ -105,6 +105,12 @@
 
   (rody-meow-setup)
   (meow-global-mode 1))
+
+(use-package meow-tree-sitter
+  :ensure t
+  :after meow
+  :config
+  (meow-tree-sitter-register-defaults))
 
 (provide 'init-meow)
 ;;; init-meow.el ends here

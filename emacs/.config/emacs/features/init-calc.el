@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package casual
+(use-package casual-calc
   :ensure t
   :defer t
   :after calc
@@ -10,4 +10,4 @@
               ("?" . casual-main-menu)))
 
 (provide 'init-calc)
-;;; init-calculator.el ends here
+;;; init-calc.el ends here

@@ -23,7 +23,7 @@
 
 
 ;; Need these loaded ASAP (many subsequent libraries depend on them).
-;;(rody--require-with-time 'init-package-extensions)
+(rody--require-with-time 'init-package-extensions)
 (rody--require-with-time 'init-exec-path-from-shell)
 (rody--require-with-time 'init-xdg)
 (rody--require-with-time 'init-no-littering)
@@ -35,7 +35,8 @@
 
 (rody--require-with-time 'init-emacs)
 (rody--require-with-time 'init-server)
-(rody--require-with-time 'init-nano)
+;; (rody--require-with-time 'init-nano)
+(rody--require-with-time 'init-fontaine)
 (rody--require-with-time 'init-image)
 (rody--require-with-time 'init-files)
 (rody--require-with-time 'init-history)
@@ -48,28 +49,33 @@
 (rody--require-with-time 'init-corfu)
 (rody--require-with-time 'init-cape)
 (rody--require-with-time 'init-consult)
+(rody--require-with-time 'init-rg)
 (rody--require-with-time 'init-completion)
 (rody--require-with-time 'init-tempel)
 (rody--require-with-time 'init-treesit)
 (rody--require-with-time 'init-prog)
 (rody--require-with-time 'init-project)
+(rody--require-with-time 'init-perspective)
+(rody--require-with-time 'init-hideshow)
 (rody--require-with-time 'init-magit)
 (rody--require-with-time 'init-vterm)
 (rody--require-with-time 'init-denote)
 (rody--require-with-time 'init-text-mode)
-(rody--require-with-time 'init-org-mode)
 (rody--require-with-time 'init-nov)
 (rody--require-with-time 'init-org-remark)
-;; (rody--require-with-time 'init-mermaid)
 (rody--require-with-time 'init-elfeed)
 (rody--require-with-time 'init-gptel)
-(rody--require-with-time 'init-dape)
 (rody--require-with-time 'init-repeat)
-;; (rody--require-with-time 'init-modus-theme)
 (rody--require-with-time 'init-indent-bars)
 (rody--require-with-time 'init-spelling)
 (rody--require-with-time 'init-calc)
 (rody--require-with-time 'init-dired)
+(rody--require-with-time 'init-ace-window)
+(rody--require-with-time 'init-avy)
+
+;; Theme, colors...
+(rody--require-with-time 'init-modus-theme)
+(rody--require-with-time 'init-pulsar)
 
 ;; inputs
 (rody--require-with-time 'init-meow)
@@ -78,10 +84,13 @@
 ;; checkers/prog helpers
 (rody--require-with-time 'init-compile)
 (rody--require-with-time 'init-eglot)
+(rody--require-with-time 'init-dape)
 (rody--require-with-time 'init-eldoc)
 (rody--require-with-time 'init-flymake)
+(rody--require-with-time 'init-apheleia)
 
 ;; languages
+(rody--require-with-time 'init-org-mode)
 (rody--require-with-time 'init-markdown)
 (rody--require-with-time 'init-golang)
 (rody--require-with-time 'init-html)
@@ -100,11 +109,18 @@
 (rody--require-with-time 'init-yaml)
 (rody--require-with-time 'init-jq)
 (rody--require-with-time 'init-rust)
+(rody--require-with-time 'init-zig)
 (rody--require-with-time 'init-openscad)
+;; (rody--require-with-time 'init-mermaid)
 (rody--require-with-time 'init-plantuml)
+(rody--require-with-time 'init-emmet)
+(rody--require-with-time 'init-css)
 
 ;; misc
 (rody--require-with-time 'init-icons)
+(rody--require-with-time 'init-doom-modeline)
+(rody--require-with-time 'init-doom-themes)
+(rody--require-with-time 'init-emms)
 
 (provide 'init-features)
 ;;; init-features.el ends here

@@ -47,16 +47,21 @@
          :map minibuffer-local-map
          ("M-s" . consult-history)                 ;; orig. next-matching-history-element
          ("M-r" . consult-history))                ;; orig. previous-matching-history-element
-  :hook (completion-list-mode . consult-preview-at-point-mode)
+  ;;:hook (completion-list-mode . consult-preview-at-point-mode)
   :custom
   (consult-narrow-key "<")
-  (consult-preview-key '("M-."
-                         :debounce 1.0
-                         any))
-  (register-preview-delay 0.5)
   (register-preview-function #'consult-register-format)
   (xref-show-xrefs-function #'consult-xref)
-  (xref-show-definitions-function #'consult-xref))
+  (xref-show-definitions-function #'consult-xref)
+  :config
+  (consult-customize
+   consult-ripgrep consult-git-grep consult-grep
+   consult-bookmark consult-recent-file consult-xref
+   consult--source-bookmark consult--source-file-register
+   consult--source-recent-file consult--source-project-recent-file
+   ;:preview-key '(:debounce 0.4 any) ;; Option 1: Delay preview
+   :preview-key "M-.")            ;; Option 2: Manual preview
+  )
 
 (use-package consult-project-extra
   :ensure t

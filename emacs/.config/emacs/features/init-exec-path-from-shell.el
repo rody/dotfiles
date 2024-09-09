@@ -10,7 +10,7 @@
   :ensure t
   :if (not (boundp 'ns-system-appearance))
   :custom
-  (exec-path-from-shell-variables '("PATH" "MANPATH" "ZDOTDIR"))
+  (exec-path-from-shell-variables '("PATH" "MANPATH"))
   :config
   (exec-path-from-shell-initialize)
   (if (and (fboundp 'native-comp-available-p)
@@ -30,8 +30,8 @@
                                        (car (file-expand-wildcards
                                              (expand-file-name "/opt/homebrew/opt/libgccjit/lib/gcc/*")))))
 	;; Only set after LIBRARY_PATH can find gcc libraries.
-	;;(setq comp-deferred-compilation t)
-        ;;(setq comp-speed 3)
+	(setq comp-deferred-compilation t)
+        (setq comp-speed 3)
 	)
     (message "Native comp is *not* available")))
 

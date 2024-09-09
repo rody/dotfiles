@@ -5,14 +5,14 @@
 (use-package org
   :ensure t
   :mode (("\\.org\\'" . org-mode))
-  ;; :hook ((org-mode . org-indent-org))
+  :hook ((org-babel-after-execute-hook . org-redisplay-inline-images))
   :bind (("C-c a a" . org-agenda)
          ("C-c n c" . org-capture)
+         ("M-n" . org-capture)
          :map org-mode-map
          ("C-c t o i" . org-toggle-inline-image)
          ("C-c t o l" . org-toggle-link-display)
          ("C-c t o p" . org-toggle-pretty-entities))
-
   :preface
   (setq rody-org-todo-filename "~/org/TODO.org")
   (setq rody-org-project-note-filename "project.org")
@@ -54,7 +54,7 @@
   (org-pretty-entities t)
   (org-ellipsis "…")
   (org-src-preserve-indentation t)
-  (org-edit-src-content-indentation 0)
+  (org-edit-src-content-indentation 5)
   (org-confirm-babel-evaluate nil)
   (org-use-sub-superscripts '{})
   (org-log-done 'time) ;; when a TODO is set to a done state, record a timestamp
@@ -74,19 +74,11 @@
 
   :config
   ;; TODO see https://blog.d46.us/advanced-emacs-startup/ to make the language load faster
-  (setq org-plantuml-exec-mode 'plantuml)
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '(
-     (latex . t)
-     (js . t)
-     (plantuml . t)
-     (jq . t)
-     )))
+  (setq org-plantuml-exec-mode 'plantuml))
 
 (use-package ob-emacs-lisp
   :ensure nil
-  :after org
+  :defer t
   :commands
   (org-babel-execute:elisp
    org-babel-expand-body:elisp
@@ -95,7 +87,6 @@
    org-babel-expand-body:emacs-lisp))
 
 (use-package ob-shell
-  :after org
   :ensure nil
   :commands
   (org-babel-execute:sh
@@ -104,13 +95,17 @@
    org-babel-execute:bash
    org-babel-expand-body:bash))
 
+(use-package ob-plantuml
+  :ensure nil
+  :commands
+  (org-babel-execute:plantuml
+   org-babel-expand-body:plantuml))
+
 (use-package ox-epub
-  :ensure t
-  :after org)
+  :ensure t)
 
 (use-package ox-latex
   :ensure nil
-  :after org
   :custom
   (org-latex-compiler "xelatex")
   (org-latex-src-block-backend 'listings)
@@ -119,12 +114,10 @@
     :ensure t))
 
 (use-package ox-md
-  :ensure nil
-  :after org)
+  :ensure nil)
 
 (use-package ox-clip
-  :ensure t
-  :after org)
+  :ensure t)
 
 (use-package ox-pandoc
   :ensure t
@@ -132,6 +125,7 @@
 
 (use-package org-modern
   :ensure t
+  :disabled t
   :after org
   :hook ((org-mode . org-modern-mode)
          (org-agenda-finalize . org-modern-agenda)))

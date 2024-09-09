@@ -4,12 +4,13 @@
 
 (use-package consult-project-extra
   :ensure t
-  :bind ("C-c f" . consult-project-extra-find))
+  :bind ("C-c p f" . consult-project-extra-find))
 
 (use-package project
   :ensure nil
   :bind (:map project-prefix-map
-              ("m"  . magit-project-status))
+              ("m" . magit-project-status)
+              ("f" . project-find-file))
 
   :commands (project-dired
              project-shell

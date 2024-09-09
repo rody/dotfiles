@@ -6,7 +6,8 @@ fundamental-mode
 (NOW (format-time-string "<%Y-%0m-%0d %a %H:%0M>"))
 (yesterday (format-time-string "<%Y-%0m-%0d %a>" (time-subtract nil (* 24 60 60))))
 (tomorrow (format-time-string "<%Y-%0m-%0d %a>" (time-add nil (* 24 60 60))))
-
+(lorem "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." n)
+(lorem2 "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?" n)
 ; prog ---------------------------------------------------------------------------
 prog-mode
 
@@ -26,12 +27,12 @@ prog-mode
 
 (sep (if (derived-mode-p 'emacs-lisp-mode) ";; " comment-start) " " (s str) " " (make-string (- 79 (length str)) ?-) n q)
 
-; lisp ---------------------------------------------------------------------------
+                                        ; lisp ---------------------------------------------------------------------------
 lisp-mode emacs-lisp-mode ;; Specify multiple modes
 
 (lambda "(lambda (" p ")" n> r> ")")x
 
-; emacs-lisp ---------------------------------------------------------------------
+                                        ; emacs-lisp ---------------------------------------------------------------------
 emacs-lisp-mode
 
 (autoload ";;;###autoload")
@@ -43,7 +44,7 @@ emacs-lisp-mode
          ";;; " (file-name-nondirectory (or (buffer-file-name) (buffer-name)))
          " ends here" n q)
 
-; text ---------------------------------------------------------------------------
+                                        ; text ---------------------------------------------------------------------------
 text-mode
 
 (box "┌─" (make-string (length str) ?─) "─┐" n
@@ -55,7 +56,7 @@ text-mode
 (cut "--8<---------------cut here---------------start------------->8---" n r n
      "--8<---------------cut here---------------end--------------->8---" n)
 
-; org ----------------------------------------------------------------------------
+                                        ; org ----------------------------------------------------------------------------
 org-mode
 
 (caption "#+caption: ")
@@ -78,7 +79,7 @@ org-mode
        "#+author: Rodolphe Blancho" n
        "#+date: " (format-time-string "%d-%m-%Y") n q)
 
-; golang -------------------------------------------------------------------------
+                                        ; golang -------------------------------------------------------------------------
 go-mode go-ts-mode
 
 (imp "import "  q)
@@ -87,7 +88,7 @@ go-mode go-ts-mode
 (main "func main() {" n> q n "}")
 (iferr "if err != nil {" n > "return err" > n "}" > n> n q)
 
-; json ---------------------------------------------------------------------------
+                                        ; json ---------------------------------------------------------------------------
 json-mode json-ts-mode
 
 (npmpack "{" n>
@@ -96,8 +97,8 @@ json-mode json-ts-mode
          "  \"version\": \"0.0.1\"" n>
          "}")
 
-; html ---------------------------------------------------------------------------
-html-mode mhtml-mode
+                                        ; html ---------------------------------------------------------------------------
+html-mode mhtml-mode templ-ts-mode
 
 (doctype.html5 "<!DOCTYPE html>" n)
 (html "<!DOCTYPE html>
@@ -109,8 +110,8 @@ html-mode mhtml-mode
     <title>" p "</title>
 </head>
 <body>"
-n> q n
-"</body>
+    n> q n
+    "</body>
 </html>")
 (script.javascript "<script type=\"text/javascript\">" q "</script>")
 (script.javascript-src "<script type=\"text/javascript\" src=\"" q "\"></script>")
@@ -119,7 +120,7 @@ n> q n
 (script.importmap "<script type=\"importmap\">" n> "{" n> "\"imports\": {" n> "}" n> "}" n> "</script>")
 (link.stylesheet-css "<link rel=\"stylesheet\" href=\"" q "\" type=\"text/css\" media=\"screen\" />")
 
-; apex -------------------------------------------------------------------
+                                        ; apex -------------------------------------------------------------------
 apex-ts-mode
 
 (db "System.debug(" q ");")
@@ -135,7 +136,7 @@ apex-ts-mode
 (rest "@RestResource(urlMapping='" p "')" q)
 (testm "@IsTest" n "static void test" p "() {" n> q n>"}")
 
-; json --------------------------------------------------------------------------
+                                        ; json --------------------------------------------------------------------------
 json-ts-mode json-mode
 
 (sfdxproj "{

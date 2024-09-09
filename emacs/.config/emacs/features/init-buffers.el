@@ -3,12 +3,12 @@
 ;;; Code:
 
 (use-package uniquify
+  :ensure nil
   :custom
   (uniquify-buffer-name-style 'forward))
 
-;;; -*- lexical-binding: t; -*-
-
 (use-package ibuffer
+  :ensure nil
   :bind (:map ibuffer-mode-map)
   ("C-k" . ibuffer-do-delete))
 

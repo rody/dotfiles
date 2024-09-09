@@ -9,21 +9,16 @@
   (use-short-answers t)
   (warning-minimum-level :error)
   (fill-column 100)
-
   :init
-  ;; (setq-default mode-line-format
-  ;;  (list
-  ;;   ;; buffer modified status
-  ;;   "%* "
-  ;;   ;; buffer name
-  ;;   (propertize "%b " 'face 'bold)
-  ;;   "           "
-  ;;   ;; vc-mode
-  ;;   'vc-mode
-  ;;   "           "
-  ;;   ;; major mode
-  ;;   "(" 'mode-name ")"
-  ;;   ))
+  ;; unbind "dangerous/obsolete" key bindings
+  (unbind-key "C-z") ;; suspend-frame
+  (unbind-key "C-x C-z") ;; suspend-frame again
+  (unbind-key "M-o") ;; facemenu-mode
+  (unbind-key "<mouse-2>") ;; pasting with mouse-wheel click
+  (unbind-key "<C-wheel-down>") ;; text scale adjust
+  (unbind-key "<C-wheel-up>") ;; ditto
+  (unbind-key "s-n") ;; make-frame
+  (unbind-key "C-x C-q") ;; read-only-mode
   )
 
 (provide 'init-emacs)

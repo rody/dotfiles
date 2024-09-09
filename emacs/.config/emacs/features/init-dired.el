@@ -20,6 +20,7 @@
    "-l --human-readable --group-directories-first --no-group"))
 
 (use-package dired-x
+  :ensure nil
   :after dired
   :config
   ;; Make dired-omit-mode hide all "dotfiles"
@@ -41,7 +42,7 @@
          ("f" . dirvish-file-info-menu)
          ("y"   . dirvish-yank-menu)
          ("N"   . dirvish-narrow)
-         ("^"   . dirvish-history-last)
+         ;; ("^"   . dirvish-history-last)
          ("h"   . dirvish-history-jump) ; remapped `describe-mode'
          ("s"   . dirvish-quicksort)    ; remapped `dired-sort-toggle-or-edit'
          ("v"   . dirvish-vc-menu)      ; remapped `dired-view-file'
@@ -55,12 +56,17 @@
          ("M-e" . dirvish-emerge-menu)
          ("M-j" . dirvish-fd-jump))
   :custom
+  (dirvish-side-auto-close t)
   (dirvish-use-mode-line nil)
   (dirvish-attributes
-   '(vc-state subtree-state all-the-icons collapse git-msg file-time file-size))
+   '(;vc-state
+     ;subtree-state
+     all-the-icons
+     ;collapse
+     file-time
+     file-size))
   :init
   (dirvish-override-dired-mode)
-  :config
   (dirvish-side-follow-mode +1) ; similar to `treemacs-follow-mode'
   )
 

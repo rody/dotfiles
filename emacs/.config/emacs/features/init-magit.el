@@ -4,17 +4,13 @@
 
 (use-package magit
   :ensure t
-  :bind (("C-c g g" . magit-dispatch)))
+  :bind (("C-x g " . magit-status)
+         ("C-x M-g" . magit-dispatch)
+         ("C-c M-g" . magit-file-dispatch)))
 
 (use-package forge
   :ensure t
   :after magit
-  :hook
-  ((magit-status-sections-hook . forge-insert-requested-reviews)
-  (magit-status-sections . forge-insert-assigned-pullreqs)
-  (magit-status-sections . forge-insert-authored-pullreqs)
-  (magit-status-sections . forge-insert-assigned-issues)
-  (magit-status-sections . forge-insert-authored-issues))
   :custom
   (forge-topic-list-limit '(2000 . -1))
   ;; from: https://blog.thomasheartman.com/posts/improve-your-workflow-with-forge

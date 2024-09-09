@@ -6,7 +6,7 @@
   :defer t
   :ensure nil
   :init
-  (repeat-mode))
+  (repeat-mode 1))
 
 (provide 'init-repeat)
 ;;; init-repeat.el ends here

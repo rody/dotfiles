@@ -4,10 +4,11 @@
 
 (use-package plantuml-mode
   :ensure t
-  :mode (("\\.plantuml\\'" . plantuml-mode))
+  :mode (("\\.plantuml\\'" . plantuml-mode)
+         ("\\.puml\\'" . plantuml-mode))
   :custom
-    (setq plantuml-executable-path "/opt/homebrew/bin/plantuml")
-    (setq plantuml-default-exec-mode 'executable))
+    (plantuml-executable-path "/opt/homebrew/bin/plantuml")
+    (plantuml-default-exec-mode 'executable))
 
 (provide 'init-plantuml)
 ;;; init-plantuml.el ends here

@@ -89,10 +89,14 @@
 ;; use-package-enable-imenu-support must be
 ;; set before requiring use-package.
 ;; (setq use-package-enable-imenu-support t)
-(require 'use-package)
 ;; (setq use-package-verbose t)
 ;; (setq use-package-compute-statistics t)
-
+(use-package use-package
+  :custom
+  (use-package-always-ensure t)
+  (package-native-compile t)
+  (package-install-upgrade-built-in t)
+  (warning-minimum-level :emergency))
 
 ;; Load non-core features.
 (load "~/.config/emacs/features/init-features.el" nil t)

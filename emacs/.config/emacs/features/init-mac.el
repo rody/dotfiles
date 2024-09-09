@@ -30,6 +30,7 @@
 
   ;; Want menu bar on macOS.
   (use-package menu-bar
+    :ensure nil
     :defer t
     :init
     (menu-bar-mode +1))

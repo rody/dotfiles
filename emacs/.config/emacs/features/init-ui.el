@@ -21,7 +21,7 @@
 
 (use-package frame
   :ensure nil
-  :defer 5
+  :defer t
   :init
   ;; Mispressing C-z invokes `suspend-frame' (disable).
   (global-unset-key (kbd "C-z"))
@@ -30,7 +30,14 @@
   (set-frame-position (selected-frame) 15 53)
   :custom
   ;; Enable expanding frame to end of screen.
-  (frame-resize-pixelwise t))
+  (frame-resize-pixelwise t)
+  ;; taken from perspective.el documentation: https://github.com/nex3/perspective-el
+  ;; reuse window
+  (display-buffer-base-action
+   '((display-buffer-reuse-window display-buffer-same-window)
+     (reusable-frames . t)))
+  ;; avoid resizing
+  (customize-set-variable 'even-window-sizes nil))
 
 (use-package window
   :ensure nil
@@ -42,13 +49,23 @@
   ;; prefer split side-by-side
   (split-width-threshold 0)
   (split-height-threshold nil)
-  (display-buffer-alist
-   '(("\\*Async Shell Command\\*"
-     (display-buffer-no-window)))))
+  :init
+  (add-to-list 'display-buffer-alist
+               '("\\*Async Shell Command\\*"
+                 (display-buffer-same-window)))
+  (add-to-list 'display-buffer-alist
+               '("\\magit:"
+                 (display-buffer-same-window)))
+  (add-to-list 'display-buffer-alist
+               '("\\*Help"
+                 (display-buffer-same-window)))
+  (add-to-list 'display-buffer-alist
+               '("\\*helpful"
+                 (display-buffer-same-window))))
 
 (use-package winner
   :ensure nil
-  :defer 5
+  :defer t
   :init
   (winner-mode))
 
@@ -70,38 +87,6 @@
           ("C-c c c" . nil)
           ("C-c c r" . nil)
           ("C-c c x" . nil)))
-
-(use-package pulsar
-  :ensure t
-  :defer t
-  :custom
-  (pulsar-delay 0.055)
-  (pulsar-iterations 10)
-  (pulsar-face 'pulsar-yellow)
-  (pulsar-highlight-face 'pulsar-yellow)
-  :init
-  ;; integration with the `consult' package:
-  (add-hook 'consult-after-jump-hook #'pulsar-recenter-top)
-  (add-hook 'consult-after-jump-hook #'pulsar-reveal-entry)
-
-  ;; integration with the built-in `imenu':
-  (add-hook 'imenu-after-jump-hook #'pulsar-recenter-top)
-  (add-hook 'imenu-after-jump-hook #'pulsar-reveal-entry)
-  (pulsar-global-mode +1))
-
-(use-package svg-tag-mode
-  :ensure t
-  :hook ((org-mode . svg-tag-mode)
-         (prog-mode . svg-tag-mode))
-  :custom
-  (svg-tag-tags
-   '(("\\(TODO\\|todo\\)[[:blank:]\\:\n]+" . ((lambda (tag)
-                   (svg-tag-make (upcase tag) :inverse t))))
-     ("\\(FIXME\\|fixme\\)[[:blank:]\\:\n]+" . ((lambda (tag)
-                                   (svg-tag-make (upcase tag) :inverse t :face 'error))))
-     ("\\(DONE\\|done\\)[[:blank:]\\:\n]+" . ((lambda (tag)
-                                   (svg-tag-make (upcase tag))))))))
-
 
 (provide 'init-ui)
 ;;; init-ui.el ends here

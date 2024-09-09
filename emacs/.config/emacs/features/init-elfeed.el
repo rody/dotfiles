@@ -20,7 +20,9 @@
           ("https://cestlaz.github.io/rss.xml" emacs)
           ("https://blog.orhun.dev/rss.xml" zig)
           ("https://matklad.github.io/feed.xml" emacs)
-          ("https://2019.wattenberger.com/rss" d3js dataviz))))
+          ("https://2019.wattenberger.com/rss" d3js dataviz)
+          ("https://www.youtube.com/feeds/videos.xml?channel_id=UCcCfJiovwYlhA_GmPTf4s_w" guitar woodworking)
+          )))
 
 (use-package elfeed-tube
   :ensure t

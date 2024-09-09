@@ -13,7 +13,13 @@
   :custom
   ;; wait 5 seconds after I stop typing to run flymake
   (flymake-no-changes-timeout 5)
+  ;; (flymake-indicator-type 'margins)
+  ;; (flymake-margin-indicators-string
+  ;;  `((error ,(nerd-icons-faicon "nf-fa-remove_sign")); compilation-error)
+  ;;    (warning ,(nerd-icons-faicon "nf-fa-warning")); compilation-warning)
+  ;;    (note ,(nerd-icons-faicon "nf-fa-circle_info")))); compilation-info)))
   (flymake-show-diagnostics-at-end-of-line nil) ;; other option: 'short
+
   :init
   (add-to-list 'display-buffer-alist
                '("\\*flymake diagnostics" (display-buffer-reuse-window display-buffer-in-side-window)

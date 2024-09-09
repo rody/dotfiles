@@ -16,5 +16,10 @@
   (all-the-icons-completion-mode)
   (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup))
 
+(use-package nerd-icons
+  :if (display-graphic-p)
+  :ensure t
+  :defer t)
+
 (provide 'init-icons)
 ;;; init-icons.el ends here
