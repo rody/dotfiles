@@ -15,10 +15,9 @@
          ("C-c n r" . org-remark-remove)
          ("C-c n d" . org-remark-delete))
   :config
-  (use-package org-remark-info :after info :config (org-remark-info-mode +1))
-  (use-package org-remark-eww  :after eww  :config (org-remark-eww-mode +1))
-  (use-package org-remark-nov  :after nov  :config (org-remark-nov-mode +1)))
+  (use-package org-remark-info :ensure t :after info :config (org-remark-info-mode +1))
+  (use-package org-remark-eww  :ensure t :after eww  :config (org-remark-eww-mode +1))
+  (use-package org-remark-nov  :ensure t :after nov  :config (org-remark-nov-mode +1)))
 
 (provide 'init-org-remark)
 ;;; init-org-remark.el ends here
-

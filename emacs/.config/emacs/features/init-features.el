@@ -76,6 +76,8 @@
 ;; Theme, colors...
 (rody--require-with-time 'init-modus-theme)
 (rody--require-with-time 'init-pulsar)
+(rody--require-with-time 'init-dimmer)
+
 
 ;; inputs
 (rody--require-with-time 'init-meow)

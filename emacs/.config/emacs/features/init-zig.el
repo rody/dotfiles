@@ -5,7 +5,7 @@
 (use-package zig-ts-mode
   :ensure t
   :vc (:url "https://github.com/ryleelyman/zig-ts-mode")
-  :ensure-system-package ((go . "brew install zig")
+  :ensure-system-package ((zig . "brew install zig")
                           (zls . "brew install zls"))
   :mode (("\\.zig\\'" . zig-ts-mode))
   :init

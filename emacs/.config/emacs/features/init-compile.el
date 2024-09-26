@@ -4,6 +4,8 @@
 
 (use-package compile
   :ensure nil
+  :bind (("C-c c c" . compile)
+         ("C-c c C" . recompile))
   :commands (compile recompile)
   :custom
   (compilation-scroll-output t)

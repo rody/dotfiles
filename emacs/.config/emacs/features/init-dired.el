@@ -33,6 +33,7 @@
 (use-package dirvish
   :ensure t
   :defer t
+  :demand t
   ;;:commands (dirvish)
   :ensure-system-package ((ffmpegthumbnailer . "brew install ffmpegthumbnailer")
                           (mediainfo . "brew install mediainfo"))

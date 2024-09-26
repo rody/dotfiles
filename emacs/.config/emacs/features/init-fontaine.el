@@ -51,16 +51,16 @@
      (cascadia
       :default-family "MonaspiceNe Nerd Font Mono"
       :default-weight 300
-      :default-height 160
+      :default-height 140
       :variable-pitch-family "MonaspiceNe Nerd Font Propo"
       :variable-pitch-weight normal
-      :variable-pitch-height 160
+      :variable-pitch-height 140
       :bold-family "MonaspiceNe Nerd Font Propo" ;
       :bold-weight bold
-      :bold-height 160
+      :bold-height 140
       :italic-family "MonaspiceAr Nerd Font Mono"
       :italic-slant italic
-      :italic-height 160
+      :italic-height 140
       :header-line-family "MonaspiceNe Nerd Font Mono"
       :line-spacing 0.1)
      (xl

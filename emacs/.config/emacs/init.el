@@ -95,7 +95,7 @@
   :custom
   (use-package-always-ensure t)
   (package-native-compile t)
-  (package-install-upgrade-built-in t)
+  (package-install-upgrade-built-in nil)
   (warning-minimum-level :emergency))
 
 ;; Load non-core features.

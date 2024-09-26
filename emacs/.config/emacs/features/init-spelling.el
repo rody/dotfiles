@@ -5,8 +5,9 @@
 (use-package jinx
   ;; depends on libenchant (brew install enchant)
   :ensure t
-  :bind (("C-c t j" . jinx-mode))
-  :bind (("M-$" . jinx-correct)
+  :ensure-system-package (enchant-2 . "brew install enchant")
+  :bind (("C-c t j" . jinx-mode)
+         ("M-$" . jinx-correct)
          ("C-M-$" . jinx-languages)))
 
 (provide 'init-spelling)

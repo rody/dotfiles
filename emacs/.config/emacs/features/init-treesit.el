@@ -3,8 +3,9 @@
 ;;; Code:
 
 (use-package treesit
-  ;; from https://nathanfurnal.xyz/posts/building-tree-sitter-langs-emacs/
   :ensure nil
+  ;; from https://nathanfurnal.xyz/posts/building-tree-sitter-langs-emacs/
+  :defer t
   :commands (treesit-install-language-grammar rody-treesit-install-all-languages)
   :init
   (setq treesit-language-source-alist

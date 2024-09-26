@@ -72,13 +72,11 @@
       "* %?\n Link: %a\n Captured: %U\n")
    ))
 
-  :config
   ;; TODO see https://blog.d46.us/advanced-emacs-startup/ to make the language load faster
-  (setq org-plantuml-exec-mode 'plantuml))
+  )
 
 (use-package ob-emacs-lisp
   :ensure nil
-  :defer t
   :commands
   (org-babel-execute:elisp
    org-babel-expand-body:elisp
@@ -99,13 +97,17 @@
   :ensure nil
   :commands
   (org-babel-execute:plantuml
-   org-babel-expand-body:plantuml))
+   org-babel-expand-body:plantuml)
+  :custom
+  (org-plantuml-exec-mode 'plantuml))
 
 (use-package ox-epub
+  :after org
   :ensure t)
 
 (use-package ox-latex
   :ensure nil
+  :after org
   :custom
   (org-latex-compiler "xelatex")
   (org-latex-src-block-backend 'listings)
@@ -114,21 +116,24 @@
     :ensure t))
 
 (use-package ox-md
+  :after org
   :ensure nil)
 
 (use-package ox-clip
+  :after org
   :ensure t)
 
 (use-package ox-pandoc
+  :after org
   :ensure t
   :after org)
 
 (use-package org-modern
   :ensure t
-  :disabled t
-  :after org
-  :hook ((org-mode . org-modern-mode)
-         (org-agenda-finalize . org-modern-agenda)))
+  :commands (org-modern-mode org-modern-agenda)
+  :custom
+  (org-modern-star 'replace)
+  )
 
 (use-package org-appear
   :ensure t
