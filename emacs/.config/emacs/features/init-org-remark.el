@@ -15,9 +15,18 @@
          ("C-c n r" . org-remark-remove)
          ("C-c n d" . org-remark-delete))
   :config
-  (use-package org-remark-info :ensure t :after info :config (org-remark-info-mode +1))
-  (use-package org-remark-eww  :ensure t :after eww  :config (org-remark-eww-mode +1))
-  (use-package org-remark-nov  :ensure t :after nov  :config (org-remark-nov-mode +1)))
+  (org-remark-global-tracking-mode +1)
+  ;; Optional if you would like to highlight websites via eww-mode
+  (with-eval-after-load 'eww
+    (org-remark-eww-mode +1))
+
+  ;; Optional if you would like to highlight EPUB books via nov.el
+  (with-eval-after-load 'nov
+    (org-remark-nov-mode +1))
+
+  ;; Optional if you would like to highlight Info documentation via Info-mode
+  (with-eval-after-load 'info
+    (org-remark-info-mode +1)))
 
 (provide 'init-org-remark)
 ;;; init-org-remark.el ends here

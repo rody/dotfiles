@@ -1,10 +1,9 @@
 ;;; init-indent-bars.el -- configuration for indent-bars -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
-
 (use-package indent-bars
-  :ensure nil
-  :load-path "~/workspaces/emacs/indent-bars"
+  :ensure t
+  ;;:load-path "~/workspaces/emacs/indent-bars"
   :bind (("C-c t i" . indent-bars-mode))
   :custom
   (indent-bars-display-on-blank-lines t)
@@ -19,10 +18,6 @@
   (indent-bars-color '(default :blend 1))
   (indent-bars-highlight-current-depth nil)
   )
-
-(provide 'init-indent-bars)
-;;; init-indent-bars.el ends here
-
 
 (provide 'init-indent-bars)
 ;;; init-indent-bars.el ends here

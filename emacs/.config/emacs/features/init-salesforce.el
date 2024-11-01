@@ -22,9 +22,9 @@
          ("\\.trigger\\'" . apex-ts-mode)
          ("\\.apex\\'" . apex-ts-mode))
   :config
-    (with-eval-after-load 'treesit
-      (add-to-list 'treesit-language-source-alist
-                   '(apex . ("https://github.com/aheber/tree-sitter-sfapex" "main" "apex/src")))))
+  (with-eval-after-load 'treesit
+    (add-to-list 'treesit-language-source-alist
+                 '(apex . ("https://github.com/aheber/tree-sitter-sfapex" "main" "apex/src")))))
 
 (use-package eglot-apex
   :ensure nil
@@ -44,12 +44,16 @@
   :custom
   ;; name of the PMD executable (defaults to 'pmd')
   ;; you can also provide a full path if pmd is not in the exec-path
-  ; (flymake-pmd-executable-name "~/Downloads/pmd-bin-6.55.0/bin/run.sh")
-  ; (flymake-pmd-use-pmd-6 t)
-  ; (flymake-pmd-pmd-6-app-name "pmd")
+  ;;  (flymake-pmd-executable-name "~/Downloads/pmd-bin-6.55.0/bin/run.sh")
+  ;;  (flymake-pmd-use-pmd-6 t)
+  ;;  (flymake-pmd-pmd-6-app-name "pmd")
   (flymake-pmd-executable-name "~/Downloads/pmd-bin-7.5.0/bin/pmd")
   (flymake-pmd-use-pmd-6 nil)
   (flymake-pmd-use-eglot t))
+
+(use-package sf-mode
+  :ensure nil
+  :load-path "~/workspaces/emacs/sf-mode")
 
 (provide 'init-salesforce)
 ;;; init-salesforce.el ends here

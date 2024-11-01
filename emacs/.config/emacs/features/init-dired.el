@@ -34,6 +34,7 @@
   :ensure t
   :defer t
   :demand t
+  :hook (after-init . dirvish-override-dired-mode)
   ;;:commands (dirvish)
   :ensure-system-package ((ffmpegthumbnailer . "brew install ffmpegthumbnailer")
                           (mediainfo . "brew install mediainfo"))
@@ -61,14 +62,14 @@
   (dirvish-use-mode-line nil)
   (dirvish-attributes
    '(;vc-state
-     ;subtree-state
+                                        ;subtree-state
      all-the-icons
-     ;collapse
+                                        ;collapse
      file-time
      file-size))
   :init
-  (dirvish-override-dired-mode)
-  (dirvish-side-follow-mode +1) ; similar to `treemacs-follow-mode'
+  ;; (dirvish-override-dired-mode)
+  ;; (dirvish-side-follow-mode +1) ; similar to `treemacs-follow-mode'
   )
 
 (provide 'init-dired)

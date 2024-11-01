@@ -2,6 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
+(setq mac-command-modifier 'super)  ; command as super
+(setq mac-option-modifier 'meta)    ; option as meta
+(setq mac-control-modifier 'control); control as control
+(setq ns-function-modifier 'hyper)  ; Fn key as hyper
 
 (when (memq window-system '(mac ns))
   ;; No icon on window.
@@ -18,10 +22,6 @@
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
   ;; modifier commands
-  (setq mac-command-modifier 'super)  ; command as super
-  (setq mac-option-modifier 'meta)    ; option as meta
-  (setq mac-control-modifier 'control); control as control
-  (setq ns-function-modifier 'hyper)  ; Fn key as hyper
 
   ;; use macOS keychain
   (with-eval-after-load 'auth-source

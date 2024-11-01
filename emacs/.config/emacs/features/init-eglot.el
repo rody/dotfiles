@@ -40,8 +40,6 @@
          (templ-ts-mode . rody--eglot-format-on-save)
          (typescript-ts-mode . eglot-ensure)
          (css-ts-mode . eglot-ensure)
-         (jtsx-tsx-mode . eglot-ensure)
-         (jtsx-typescript-mode . eglot-ensure)
          (zig-ts-mode . rody--eglot-format-on-save))
   :config
   ;; from
@@ -56,14 +54,7 @@
   (add-to-list 'eglot-server-programs
                '(terraform-mode "terraform-ls" "serve"))
   (add-to-list 'eglot-server-programs
-               '(templ-ts-mode "templ" "lsp"))
-  (add-to-list 'eglot-server-programs
-               '((js-mode typescript-mode typescript-ts-mode)
-                 "typescript-language-server" "--stdio"))
-  (add-to-list 'eglot-server-programs
-               '((js-mode js-ts-mode
-                          tsx-ts-mode typescript-ts-mode typescript-mode)
-                 "typescript-language-server" "--stdio")))
+               '(templ-ts-mode "templ" "lsp")))
 
 (use-package consult-eglot
   :ensure t

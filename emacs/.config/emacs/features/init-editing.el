@@ -35,11 +35,11 @@
 
 (use-package autorevert
   :ensure nil
-  :defer 1
+  :defer t
   :custom
   (global-auto-revert-non-file-buffers t)
   :init
-  (global-auto-revert-mode))
+  (global-auto-revert-mode +1))
 
 (use-package vundo
   :ensure t

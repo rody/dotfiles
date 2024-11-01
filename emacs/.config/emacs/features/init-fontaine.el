@@ -7,80 +7,177 @@
   :if window-system
   :init
   (setq fontaine-presets
-   '((regular
-      :default-family "Hack"
-      :default-weight normal
-      :default-height 150
-      :fixed-pitch-family "Fira Code"
-      :fixed-pitch-weight nil ; falls back to :default-weight
-      :fixed-pitch-height 1.0
-      :variable-pitch-family "Noto Sans"
-      :variable-pitch-weight normal
-      :variable-pitch-height 1.0
-      :bold-family nil ; use whatever the underlying face has
-      :bold-weight bold
-      :italic-family "Source Code Pro"
-      :italic-slant italic
-      :line-spacing 1)
-     (large
-      :default-family "Iosevka"
-      :default-weight normal
-      :default-height 150
-      :fixed-pitch-family nil ; falls back to :default-family
-      :fixed-pitch-weight nil ; falls back to :default-weight
-      :fixed-pitch-height 1.0
-      :variable-pitch-family "FiraGO"
-      :variable-pitch-weight normal
-      :variable-pitch-height 1.05
-      :bold-family nil ; use whatever the underlying face has
-      :bold-weight bold
-      :italic-family nil ; use whatever the underlying face has
-      :italic-slant italic
-      :line-spacing 1)
-     (nano
-      :default-family "Roboto Mono"
-      :default-weight light
-      :default-height 140
-      :italic-family "Victor Mono"
-      :italic-slant italic
-      :italic-weight light
-      :italic-height 160
-      :bold-family "Roboto Mono" ; use whatever the underlying face has
-      :bold-weight bold
-      :line-spacing 0.2)
-     (cascadia
-      :default-family "MonaspiceNe Nerd Font Mono"
-      :default-weight 300
-      :default-height 140
-      :variable-pitch-family "MonaspiceNe Nerd Font Propo"
-      :variable-pitch-weight normal
-      :variable-pitch-height 140
-      :bold-family "MonaspiceNe Nerd Font Propo" ;
-      :bold-weight bold
-      :bold-height 140
-      :italic-family "MonaspiceAr Nerd Font Mono"
-      :italic-slant italic
-      :italic-height 140
-      :header-line-family "MonaspiceNe Nerd Font Mono"
-      :line-spacing 0.1)
-     (xl
-      :default-family "MonaspiceNe Nerd Font Mono"
-      :default-weight 300
-      :default-height 220
-      :variable-pitch-family "MonaspiceNe Nerd Font Propo"
-      :variable-pitch-weight normal
-      :variable-pitch-height 160
-      :bold-family "MonaspiceNe Nerd Font Propo" ;
-      :bold-weight bold
-      :bold-height 220
-      :italic-family "MonaspiceAr Nerd Font Mono"
-      :italic-slant italic
-      :italic-height 220
-      :header-line-family "MonaspiceNe Nerd Font Mono"
-      :line-spacing 0.1
-)))
+        '((font-rody
+           :default-family "MonaspiceNe Nerd Font Mono"
+           :default-weight regular
+           :default-slant normal
+           :default-width normal
+           :default-height 120
 
-  (fontaine-set-preset (or (fontaine-restore-latest-preset) 'regular))
+           :fixed-pitch-family nil
+           :fixed-pitch-weight nil
+           :fixed-pitch-slant nil
+           :fixed-pitch-width nil
+           :fixed-pitch-height 1.0
+
+           :fixed-pitch-serif-family nil
+           :fixed-pitch-serif-weight nil
+           :fixed-pitch-serif-slant nil
+           :fixed-pitch-serif-width nil
+           :fixed-pitch-serif-height 1.0
+
+           :variable-pitch-family "MonaspiceRn Nerd Font Mono"
+           :variable-pitch-weight nil
+           :variable-pitch-slant nil
+           :variable-pitch-width nil
+           :variable-pitch-height 1.0
+
+           :mode-line-active-family nil
+           :mode-line-active-weight nil
+           :mode-line-active-slant nil
+           :mode-line-active-width nil
+           :mode-line-active-height 1.0
+
+           :mode-line-inactive-family nil
+           :mode-line-inactive-weight nil
+           :mode-line-inactive-slant nil
+           :mode-line-inactive-width nil
+           :mode-line-inactive-height 1.0
+
+           :header-line-family nil
+           :header-line-weight nil
+           :header-line-slant nil
+           :header-line-width nil
+           :header-line-height 1.0
+
+           :line-number-family nil
+           :line-number-weight nil
+           :line-number-slant nil
+           :line-number-width nil
+           :line-number-height 1.0
+
+           :tab-line-family nil
+           :tab-line-weight nil
+           :tab-line-slant nil
+           :tab-line-width nil
+           :tab-line-height 1.0
+
+           :bold-family nil
+           :bold-slant nil
+           :bold-weight bold
+           :bold-width nil
+           :bold-height 1.0
+
+           :italic-family nil
+           :italic-weight nil
+           :italic-slant italic
+           :italic-width nil
+           :italic-height 1.0
+
+           :line-spacing nil)
+          (font-cascadia
+           :default-family "Cascadia Code"
+           :default-weight regular
+           :default-slant normal
+           :default-width normal
+           :default-height 120
+
+           :fixed-pitch-family nil
+           :fixed-pitch-weight nil
+           :fixed-pitch-slant nil
+           :fixed-pitch-width nil
+           :fixed-pitch-height 1.0
+
+           :fixed-pitch-serif-family nil
+           :fixed-pitch-serif-weight nil
+           :fixed-pitch-serif-slant nil
+           :fixed-pitch-serif-width nil
+           :fixed-pitch-serif-height 1.0
+
+           :variable-pitch-family "Cascadia Code"
+           :variable-pitch-weight nil
+           :variable-pitch-slant nil
+           :variable-pitch-width nil
+           :variable-pitch-height 1.0
+
+           :mode-line-active-family nil
+           :mode-line-active-weight nil
+           :mode-line-active-slant nil
+           :mode-line-active-width nil
+           :mode-line-active-height 1.0
+
+           :mode-line-inactive-family nil
+           :mode-line-inactive-weight nil
+           :mode-line-inactive-slant nil
+           :mode-line-inactive-width nil
+           :mode-line-inactive-height 1.0
+
+           :header-line-family nil
+           :header-line-weight nil
+           :header-line-slant nil
+           :header-line-width nil
+           :header-line-height 1.0
+
+           :line-number-family nil
+           :line-number-weight nil
+           :line-number-slant nil
+           :line-number-width nil
+           :line-number-height 1.0
+
+           :tab-line-family nil
+           :tab-line-weight nil
+           :tab-line-slant nil
+           :tab-line-width nil
+           :tab-line-height 1.0
+
+           :bold-family nil
+           :bold-slant nil
+           :bold-weight bold
+           :bold-width nil
+           :bold-height 1.0
+
+           :italic-family nil
+           :italic-weight nil
+           :italic-slant italic
+           :italic-width nil
+           :italic-height 1.0
+
+           :line-spacing nil)
+          ;; alternate fonts
+          (font-iosevka-comfy
+           :default-family "Iosevka Comfy")
+          (font-iosevka-comfy-duo
+           :default-family "Iosevka Comfy Duo")
+          (font-fira-code
+           :default-family "FiraCode Nerd Font Mone"
+           :variable-pitch-family "FiraCode Nerd Font Propo")
+
+          ;; font sizes
+          (size-xs
+           :default-height 100)
+          (size-small
+           :default-height 110)
+          (size-normal
+           :default-height 120)
+          (size-large
+           :default-height 150)
+          (size-xl
+           :default-height 180)
+          (size-xxl
+           :default-height 240)
+
+          ;; line spacing
+          (spacing-normal
+           :line-spacing nil)
+          (spacing-large
+           :line-spacing 0.1)
+          (spacing-xl
+           :line-spacing 0.2)
+          (spacing-xxl
+           :line-spacing 0.3)
+          ))
+
+  (fontaine-set-preset (or (fontaine-restore-latest-preset) 'rody))
   (fontaine-mode 1))
 
 

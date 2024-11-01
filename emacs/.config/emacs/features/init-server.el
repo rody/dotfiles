@@ -4,7 +4,7 @@
 
 (use-package server
   :ensure nil
-  :defer 10
+  :defer t
   :config
   (unless server-process
     (server-start)))

@@ -37,6 +37,7 @@
 (rody--require-with-time 'init-server)
 ;; (rody--require-with-time 'init-nano)
 (rody--require-with-time 'init-fontaine)
+(rody--require-with-time 'init-ligature)
 (rody--require-with-time 'init-image)
 (rody--require-with-time 'init-files)
 (rody--require-with-time 'init-history)
@@ -68,7 +69,7 @@
 (rody--require-with-time 'init-repeat)
 (rody--require-with-time 'init-indent-bars)
 (rody--require-with-time 'init-spelling)
-(rody--require-with-time 'init-calc)
+(rody--require-with-time 'init-casual)
 (rody--require-with-time 'init-dired)
 (rody--require-with-time 'init-ace-window)
 (rody--require-with-time 'init-avy)
@@ -123,6 +124,7 @@
 (rody--require-with-time 'init-doom-modeline)
 (rody--require-with-time 'init-doom-themes)
 (rody--require-with-time 'init-emms)
+(rody--require-with-time 'init-ledger)
 
 (provide 'init-features)
 ;;; init-features.el ends here
