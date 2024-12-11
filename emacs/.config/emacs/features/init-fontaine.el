@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
+
 (use-package fontaine
   :ensure t
   :if window-system
@@ -80,7 +81,7 @@
            :default-weight regular
            :default-slant normal
            :default-width normal
-           :default-height 120
+           :default-height 140
 
            :fixed-pitch-family nil
            :fixed-pitch-weight nil

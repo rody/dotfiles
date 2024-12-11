@@ -4,8 +4,7 @@
 
 (use-package text-mode
   :ensure nil
-  :defer t
-  :hook ((text-mode . visual-line-mode)))
+  :defer t)
 
 (provide 'init-text-mode)
 ;;; init-text-mode.el ends here

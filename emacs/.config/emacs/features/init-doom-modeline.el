@@ -4,9 +4,7 @@
 
 (use-package doom-modeline
   :ensure t
-  :defer t
-  :init
-  (doom-modeline-mode +1))
+  :hook (after-init . doom-modeline-mode))
 
 (provide 'init-doom-modeline)
 ;;; init-doom-modeline.el ends here

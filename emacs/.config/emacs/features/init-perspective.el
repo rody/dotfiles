@@ -12,7 +12,7 @@
   :custom
   (persp-mode-prefix-key (kbd "C-z"))  ; pick your own prefix key here
   (persp-state-default-file (concat rody-emacs-state-directory "perspective-save"))
-  :init
+  :config
   (persp-mode))
 
 (provide 'init-perspective)

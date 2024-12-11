@@ -4,8 +4,9 @@
 
 (use-package avy
   :ensure t
-  :bind (("M-s c" . 'avy-g_oto-char-timer)
-         ("M-g g" . 'avy-goto-line)))
+  :bind (("M-s c" . #'avy-goto-char-timer)
+         ("M-s w" . #'avy-goto-word-0)
+         ("M-g g" . #'avy-goto-line)))
 
 (provide 'init-avy)
 ;;; init-avy.el ends here

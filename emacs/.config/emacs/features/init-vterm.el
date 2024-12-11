@@ -7,8 +7,9 @@
   :ensure t
   :commands (vterm
              vterm-other-window)
-  :bind (:map project-prefix-map
-              ("t" . project-vterm))
+  :bind (("C-c t t" . vterm)
+         :map project-prefix-map
+         ("t" . project-vterm))
   :preface
   (defun project-vterm ()
     ;; from https://www.reddit.com/r/emacs/comments/wu5rxi/tramp_projectel_vterm_integration_help/
@@ -27,25 +28,19 @@
   (vterm-copy-exclude-prompt t)
   (vterm-max-scrollback 100000)
   (vterm-tramp-shells '(("ssh" "/bin/bash")
-                             ("podman" "/bin/bash")))
+                        ("podman" "/bin/bash")))
   :init
   (add-to-list 'project-switch-commands     '(project-vterm "Vterm") t)
   (add-to-list 'project-kill-buffer-conditions  '(major-mode . vterm-mode))
 
   (add-to-list 'display-buffer-alist
-             '("vterm\\*"
-               (display-buffer-in-side-window)
-               (side . bottom)
-               (slot . 0) ;; -1 == L  0 == Mid 1 == R
-               (window-height . 0.33) ;; take 2/3 on bottom left
-               (window-parameters
-                (no-delete-other-windows . nil)))))
-
-(use-package multi-vterm
-  :ensure t
-  :bind (("C-c vt" . multi-vterm-project)
-         ("C-c vn" . multi-vterm-next)
-         ("C-c vp" . multi-vterm-prev)))
+               '("vterm\\*"
+                 (display-buffer-in-side-window)
+                 (side . bottom)
+                 (slot . 0) ;; -1 == L  0 == Mid 1 == R
+                 (window-height . 0.33) ;; take 2/3 on bottom left
+                 (window-parameters
+                  (no-delete-other-windows . nil)))))
 
 (provide 'init-vterm)
 ;;; init-vterm.el ends here

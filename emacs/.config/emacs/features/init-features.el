@@ -60,12 +60,12 @@
 (rody--require-with-time 'init-hideshow)
 (rody--require-with-time 'init-magit)
 (rody--require-with-time 'init-vterm)
+(rody--require-with-time 'init-eat)
 (rody--require-with-time 'init-denote)
 (rody--require-with-time 'init-text-mode)
 (rody--require-with-time 'init-nov)
 (rody--require-with-time 'init-org-remark)
 (rody--require-with-time 'init-elfeed)
-(rody--require-with-time 'init-gptel)
 (rody--require-with-time 'init-repeat)
 (rody--require-with-time 'init-indent-bars)
 (rody--require-with-time 'init-spelling)
@@ -73,6 +73,8 @@
 (rody--require-with-time 'init-dired)
 (rody--require-with-time 'init-ace-window)
 (rody--require-with-time 'init-avy)
+(rody--require-with-time 'init-olivetti)
+(rody--require-with-time 'init-editorconfig)
 
 ;; Theme, colors...
 (rody--require-with-time 'init-modus-theme)
@@ -101,7 +103,6 @@
 (rody--require-with-time 'init-json)
 (rody--require-with-time 'init-restclient)
 (rody--require-with-time 'init-docker)
-(rody--require-with-time 'init-ollama)
 (rody--require-with-time 'init-java)
 (rody--require-with-time 'init-terraform)
 (rody--require-with-time 'init-javascript)
@@ -118,6 +119,10 @@
 (rody--require-with-time 'init-plantuml)
 (rody--require-with-time 'init-emmet)
 (rody--require-with-time 'init-css)
+
+;; AI/LLM
+(rody--require-with-time 'init-ellama)
+(rody--require-with-time 'init-gptel)
 
 ;; misc
 (rody--require-with-time 'init-icons)

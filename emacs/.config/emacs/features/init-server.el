@@ -6,6 +6,7 @@
   :ensure nil
   :defer t
   :config
+  (setq server-socket-dir "~/.local/share/emacs/server")
   (unless server-process
     (server-start)))
 

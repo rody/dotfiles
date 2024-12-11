@@ -5,7 +5,7 @@
 (use-package org
   :ensure t
   :mode (("\\.org\\'" . org-mode))
-  :hook ((org-babel-after-execute-hook . org-redisplay-inline-images))
+  :hook ((org-babel-after-execute . org-redisplay-inline-images))
   :bind (("C-c a a" . org-agenda)
          ("C-c n c" . org-capture)
          ("M-n" . org-capture)
@@ -13,37 +13,9 @@
          ("C-c t o i" . org-toggle-inline-image)
          ("C-c t o l" . org-toggle-link-display)
          ("C-c t o p" . org-toggle-pretty-entities))
-  :preface
-  (setq rody-org-todo-filename "~/org/TODO.org")
-  (setq rody-org-project-note-filename "project.org")
-  (setq rody-org-project-log-filename "log.org")
-  (setq rody-org-project-notes-root "~/org/projects/")
-  (setq rody-org-someday-filename "~/org/someday.org")
-  (setq rody-org-distractions-filename "~/org/distractions.org")
-
-  ;;;; idea from https://emacsconf.org/2023/talks/unentangling/ to manage notes for a project
-  ;;;; outside of the project repo
-  (defun rody-get-project-notes-dir()
-    "Return the project notes directory if defined as a dir-local.
-     Falls back to using the project name from project.el otherwise."
-    (interactive)
-    (if (bound-and-true-p rody-org-project-notes-dir)
-        (concat rody-org-project-notes-root "/" rody-org-project-notes-dir "/")
-      (if (bound-and-true-p project-vc-name)
-          (concat rody-org-project-notes-root "/" project-vc-name "/")
-        (error "No project name defined. Consider setting one in .dir-locals.el"))))
-
-  (defun rody-get-project-note-filename()
-    "Return the project note file."
-    (concat (rody-get-project-notes-dir) rody-org-project-note-filename))
-
-  (defun rody-get-project-note-file()
-    "Return the project note file."
-    (interactive)
-    (find-file (rody-get-project-note-filename)))
 
   :custom
-  (org-agenda-files (directory-files-recursively "~/org/" "\\.org$"))
+  (org-directory "~/org")
   (org-auto-align-tags nil)
   (org-tags-column 0)
   (org-catch-invisible-edits 'show-and-error)
@@ -59,21 +31,96 @@
   (org-use-sub-superscripts '{})
   (org-log-done 'time) ;; when a TODO is set to a done state, record a timestamp
 
+  (org-todo-keywords
+   '((sequence "TODO" "NEXT" "WAITING" "MAYBE" "|" "DONE" "CANCEL" "DELEGATED")))
+
+  ;; org-agenda
+  (org-agenda-files (directory-files-recursively org-directory "\\.org$"))
+  (calendar-week-start-day 1) ;; week start on Monday
+  (org-agenda-start-day "+0d")
+  (org-agenda-span 3)
+  (org-agenda-skip-timestamp-if-done t)
+  (org-agenda-skip-deadline-if-done t)
+  (org-agenda-include-deadlines t)
+  (org-agenda-skip-scheduled-if-done t)
+  ;;(org-agenda-block-separator nil)
+  ;; from testing this seems to be a good value
+  ;;(org-agenda-tags-column 100)
+  ;;(org-agenda-compact-blocks nil)
+  ;;(org-agenda-time-grid '((daily) () "" ""))
+  (org-agenda-compact-blocks t)
+  (org-agenda-start-with-log-mode t)
+
+  ;; org capture
+  (org-default-notes-file "~/org/todo.org")
   (org-capture-templates
    '(
-     ;;;; Repo-specific templates
-     ("p" "=== project-specific templates ===")
-     ("pt" "✔️ New TODO (project-specific)" entry (file+headline (lambda () (rody-get-project-note-filename)) "Current project TODOs")
-      "* TODO %?\n%U\n%a\n" :prepend t)
-     ("pn" "📖 General note / assumptions / etc (project-specific)" entry (file+headline (lambda () (rody-get-project-note-filename)) "Notes")
-      "* %?\n%U\n%a\n" :prepend t)
       ;;;; other top-level templates
-     ("d" "⚽ A distraction!" entry (file rody-org-distractions-filename)
-      "* %?\n Link: %a\n Captured: %U\n")
-   ))
-
-  ;; TODO see https://blog.d46.us/advanced-emacs-startup/ to make the language load faster
+     ("t" "✔️ TODO" entry (file+headline org-default-notes-file "Tasks")
+      "** TODO [#B] %^{Todo} %^G \n:PROPERTIES:\n:CREATED: %U\n:END:\n%?"
+      :clock-in t :clock-resume t :empty-lines 1)
+     ("n" "⏭️ Next Task" entry (file+headline org-default-notes-file "Tasks")
+      "** NEXT [#A] %^{Todo} %^G \n:PROPERTIES:\n:CREATED: %U\nDEADLINE: %t\n:END:\n%?"
+      :clock-in t :clock-resume t :empty-lines 1)
+     ("i" "💡 Idea" entry (file+headline org-default-notes-file "Tasks")
+      "** MAYBE %^{Title} %^G \n:PROPERTIES:\nCREATED: %U\n:END:\n%?"
+      :clock-in t :clock-resume t :empty-lines 1)
+     ("m" "🤝 Meeting Notes" entry (file+headline "meeting_notes.org" "Meeting Notes")
+      "** Meeting Note: %^{Meeting name}\n:PROPERTIES:\n:CREATED:%U\n:END:\n %?"
+      :clock-in t :clock-resume t :empty-lines 1)
+     ("h" "🎯 Habit" entry (file+headline org-default-notes-file "Habits")
+      "** NEXT %?\n%U\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
+     ))
   )
+
+(use-package org-super-agenda
+  :ensure t
+  :hook (org-agenda-mode . org-super-agenda-mode)
+  :config
+  (setq org-super-agenda-groups
+        '(
+          (:log t
+                :order 1000)  ; Automatically named "Log"
+          (:name "Next to do"
+                 :todo "NEXT"
+                 :order 0)
+          (:name "Today"
+                 :time-grid t
+                 :scheduled today)
+          (:habit t)
+          (:name "Due today"
+                 :deadline today)
+          (:name "Overdue"
+                 :deadline past)
+          (:name "Due soon"
+                 :deadline future)
+          (:name "Important"
+                 :priority "A")
+          (:name "RACV Other"
+                 :and (:tag "racv" :todo ("MAYBE"))
+                 :order 11)
+          (:name "RACV"
+                 :tag "racv"
+                 :order 10)
+          (:name "Projects"
+                 :children t)
+          (:name "Family"
+                 :tag "family"
+                 :order 90)
+          (:name "Guitar"
+                 :tag "guitar"
+                 :order 91)
+          (:name "Unimportant"
+                 :todo ("SOMEDAY" "MAYBE" "CHECK" "TO-READ" "TO-WATCH")
+                 :order 100)
+          (:name "Waiting..."
+                 :todo "WAITING"
+                 :order 98)
+          (:name "Scheduled earlier"
+                 :scheduled past)
+          ))
+
+  (setq org-super-agenda-keep-order t))
 
 (use-package ob-emacs-lisp
   :ensure nil
@@ -130,10 +177,8 @@
 
 (use-package org-modern
   :ensure t
-  :commands (org-modern-mode org-modern-agenda)
-  :custom
-  (org-modern-star 'replace)
-  )
+  :hook ((org-mode . org-modern-mode)
+         (org-agenda-finalize . org-modern-agenda)))
 
 (use-package org-appear
   :ensure t
@@ -143,6 +188,10 @@
 (use-package org-tidy
   :ensure t
   :after org)
+
+(use-package org-appear
+  :ensure t
+  :hook ((org-mode . org-appear-mode)))
 
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here

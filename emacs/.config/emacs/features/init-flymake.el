@@ -4,7 +4,7 @@
 
 (use-package flymake
   :ensure t
-;;  :pin melpa
+  ;;  :pin melpa
   :hook (prog-mode . flymake-mode)
   :bind (:map flymake-mode-map
               ("C-c ! n" . flymake-goto-next-error)

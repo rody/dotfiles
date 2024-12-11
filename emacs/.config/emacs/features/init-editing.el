@@ -26,12 +26,12 @@
 
 (use-package visual-fill-column
   :ensure t
-  :hook ((gfm-view-mode . visual-fill-column-mode)
-         (gfm-mode . visual-fill-column-mode)
-         (markdown-mode . visual-fill-column-mode)
-         (org-mode . visual-fill-column-mode))
-  :custom
-  (visual-fill-column-center-text nil))
+  :hook ((gfm-view-mode . visual-line-fill-column-mode)
+         (gfm-mode . visual-line-fill-column-mode)
+         (markdown-mode . visual-line-fill-column-mode)
+         (org-mode . visual-line-fill-column-mode))
+  :config
+  (setq-default visual-fill-column-center-text t))
 
 (use-package autorevert
   :ensure nil
