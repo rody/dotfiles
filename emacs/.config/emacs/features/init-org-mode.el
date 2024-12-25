@@ -65,6 +65,9 @@
      ("i" "💡 Idea" entry (file+headline org-default-notes-file "Tasks")
       "** MAYBE %^{Title} %^G \n:PROPERTIES:\nCREATED: %U\n:END:\n%?"
       :clock-in t :clock-resume t :empty-lines 1)
+     ("e" "🎫 Event/Meeting" entry (file+headline org-default-notes-file "Events")
+      "** Event: %^{Event name}\n:PROPERTIES:\n:CREATED:%U\n:SCHEDULED: %^{time}t\n:END:\n %?"
+      :clock-in t :clock-resume t :empty-lines 1)
      ("m" "🤝 Meeting Notes" entry (file+headline "meeting_notes.org" "Meeting Notes")
       "** Meeting Note: %^{Meeting name}\n:PROPERTIES:\n:CREATED:%U\n:END:\n %?"
       :clock-in t :clock-resume t :empty-lines 1)

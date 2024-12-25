@@ -28,16 +28,16 @@
   ;; Predefined llm providers for interactive switching.
   ;; You shouldn't add ollama providers here - it can be selected interactively
   ;; without it. It is just example.
-  ;; (setopt ellama-providers
-  ;;         '(("zephyr" . (make-llm-ollama
-  ;;       		 :chat-model "zephyr:7b-beta-q6_K"
-  ;;       		 :embedding-model "zephyr:7b-beta-q6_K"))
-  ;;           ("mistral" . (make-llm-ollama
-  ;;       		  :chat-model "mistral:7b-instruct-v0.2-q6_K"
-  ;;       		  :embedding-model "mistral:7b-instruct-v0.2-q6_K"))
-  ;;           ("mixtral" . (make-llm-ollama
-  ;;       		  :chat-model "mixtral:8x7b-instruct-v0.1-q3_K_M-4k"
-  ;;       		  :embedding-model "mixtral:8x7b-instruct-v0.1-q3_K_M-4k"))))
+  (setopt ellama-providers
+          '(("zephyr" . (make-llm-ollama
+        		 :chat-model "zephyr:latest"
+        		 :embedding-model "zephyr:latest"))
+            ("mistral" . (make-llm-ollama
+        		  :chat-model "mistral:7b"
+        		  :embedding-model "mistral:7b"))
+            ("qwen-coder" . (make-llm-ollama
+        		     :chat-model "qwen2.5-coder:latest"
+        		     :embedding-model "qwen2.5-coder:latest "))))
   ;; Naming new sessions with llm
   ;; (setopt ellama-naming-provider
   ;;         (make-llm-ollama

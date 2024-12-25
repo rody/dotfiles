@@ -9,6 +9,8 @@
          ("M-o" . ace-window))
   :custom
   (aw-dispatch-always t)
+  (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+
   :custom-face
   (aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 
