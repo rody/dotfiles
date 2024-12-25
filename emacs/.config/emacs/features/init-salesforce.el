@@ -3,6 +3,7 @@
 ;;; Code:
 
 (use-package apex-ts-mode
+  :if (f-directory? "~/workspaces/emacs/apex-ts-mode")
   :ensure nil
   :load-path "~/workspaces/emacs/apex-ts-mode"
   :preface
@@ -27,6 +28,7 @@
                  '(apex . ("https://github.com/aheber/tree-sitter-sfapex" "main" "apex/src")))))
 
 (use-package eglot-apex
+  :if (f-directory? "~/workspaces/emacs/eglot-apex")
   :ensure nil
   :load-path "~/workspaces/emacs/eglot-apex"
   :hook
@@ -38,6 +40,7 @@
     (setq-local eglot-stay-out-of '(imenu))))
 
 (use-package flymake-pmd
+  :if (f-directory? "~/workspaces/emacs/flymake-pmd")
   :ensure nil
   :load-path "~/workspaces/emacs/flymake-pmd"
   :hook (apex-ts-mode . flymake-pmd-enable)
@@ -52,6 +55,7 @@
   (flymake-pmd-use-eglot t))
 
 (use-package sf-mode
+  :if (f-directory? "~/workspaces/emacs/sf-mode")
   :ensure nil
   :load-path "~/workspaces/emacs/sf-mode")
 
