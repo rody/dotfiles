@@ -196,5 +196,10 @@
   :ensure t
   :hook ((org-mode . org-appear-mode)))
 
+;; long-table-edit support for org and markdown
+(use-package lte
+  :ensure t
+  :hook ((org-mode markdown-mode) . lte-truncate-table-mode))
+
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here

@@ -13,7 +13,7 @@
          ("C-x r b" . consult-bookmark)
          ("C-x p b" . consult-project-buffer)
          ("C-x M-:" . consult-complex-command)
-          ;; Other custom bindings
+         ;; Other custom bindings
          ("M-y" . consult-yank-pop)
          ;; M-g bindings in `goto-map'
          ("M-g e" . consult-compile-error)
@@ -59,7 +59,7 @@
    consult-bookmark consult-recent-file consult-xref
    consult--source-bookmark consult--source-file-register
    consult--source-recent-file consult--source-project-recent-file
-   ;:preview-key '(:debounce 0.4 any) ;; Option 1: Delay preview
+                                        ;:preview-key '(:debounce 0.4 any) ;; Option 1: Delay preview
    :preview-key "M-.")            ;; Option 2: Manual preview
   )
 
@@ -84,6 +84,14 @@
   :config
   (with-eval-after-load 'magit
     (setq consult-git-log-grep-open-function #'magit-show-commit)))
+
+(use-package consult-vc-modified-files
+  :ensure t
+  :bind ("C-x v /" . consult-vc-modified-files))
+
+(use-package consult-eglot
+  :ensure t
+  :after (consult eglot))
 
 (provide 'init-consult)
 ;;; init-consult.el ends here

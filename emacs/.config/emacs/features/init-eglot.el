@@ -16,10 +16,10 @@
     (add-hook 'before-save-hook #'eglot-format-buffer nil t))
   :bind (:map
          eglot-mode-map
-         ("C-c c a" . eglot-code-actions)
-         ("C-c c o" . eglot-code-action-organize-imports)
-         ("C-c c r" . eglot-rename)
-         ("C-c c f" . eglot-format))
+         ("C-c c l a" . eglot-code-actions)
+         ("C-c c l o" . eglot-code-action-organize-imports)
+         ("C-c c l r" . eglot-rename)
+         ("C-c c l f" . eglot-format))
   :init
   (setq-default eglot-workspace-configuration
                 '((:gopls .

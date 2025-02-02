@@ -11,7 +11,7 @@
   ;; Emacs 28: Hide commands in M-x which do not apply to the current mode.
   ;; Corfu commands are hidden, since they are not supposed to be used via M-x.
   (setq read-extended-command-predicate
-         #'command-completion-default-include-p)
+        #'command-completion-default-include-p)
 
   ;; Enable indentation+completion using the TAB key.
   ;; `completion-at-point' is often bound to M-TAB.
@@ -59,6 +59,16 @@
   ;; Tidy shadowed file names
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
+;; use posframe to display vertico completion
+(use-package vertico-posframe
+  :ensure t
+  :after (vertico vertico-multiform)
+  :init
+  (setq vertico-multiform-commands
+        '((consult-line (:not posframe))
+          (t posframe)))
+  (vertico-multiform-mode 1))
+
 (use-package marginalia
   :ensure t
   :defer t
@@ -66,7 +76,7 @@
   ;; available in the *Completions* buffer, add it to the
   ;; `completion-list-mode-map'.
   :bind (:map minibuffer-local-map
-         ("M-A" . marginalia-cycle))
+              ("M-A" . marginalia-cycle))
 
   ;; The :init section is always executed.
   :init

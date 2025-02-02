@@ -2,12 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
-(setq mac-command-modifier 'super)  ; command as super
-(setq mac-option-modifier 'meta)    ; option as meta
-(setq mac-control-modifier 'control); control as control
-(setq ns-function-modifier 'hyper)  ; Fn key as hyper
 
 (when (memq window-system '(mac ns))
+  (setq mac-command-modifier 'super)  ; command as super
+  (setq mac-option-modifier 'meta)    ; option as meta
+  (setq mac-control-modifier 'control); control as control
+  (setq ns-function-modifier 'hyper)  ; Fn key as hyper
+
   ;; No icon on window.
   (setq ns-use-proxy-icon nil)
 
@@ -34,7 +35,7 @@
     :defer t
     :init
     (menu-bar-mode +1))
-)
+  )
 
 (provide 'init-mac)
 ;;; init-mac.el ends here

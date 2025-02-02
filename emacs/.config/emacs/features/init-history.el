@@ -2,11 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
-(setq history-length 20000)
+(setq history-length 200)
 (setq history-delete-duplicates t)
 
 (use-package savehist
-  :defer 10
+  :defer t
   :custom
   (savehist-save-minibuffer-history t)
   (savehist-file (concat rody-emacs-state-directory "history"))
@@ -14,8 +14,7 @@
   (mapc (lambda (ring)
           (add-to-list 'savehist-additional-variables
                        ring))
-        '(kill-ring
-          search-ring
+        '(search-ring
           regexp-search-ring
           last-kbd-macro
           shell-command-history

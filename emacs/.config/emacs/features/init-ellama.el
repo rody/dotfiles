@@ -13,13 +13,6 @@
   (setopt ellama-language "English")
   ;; could be llm-openai for example
   (require 'llm-ollama)
-  (setopt ellama-provider
-	  (make-llm-ollama
-	   ;; this model should be pulled to use it
-	   ;; value should be the same as you print in terminal during pull
-	   :chat-model "zephyr:latest"
-	   :embedding-model "zephyr:latest"
-	   :default-chat-non-standard-params '(("num_ctx" . 8192))))
   ;; (setopt ellama-summarization-provider
   ;;         (make-llm-ollama
   ;;          :chat-model "qwen2.5:3b"
@@ -32,9 +25,9 @@
           '(("zephyr" . (make-llm-ollama
         		 :chat-model "zephyr:latest"
         		 :embedding-model "zephyr:latest"))
-            ("mistral" . (make-llm-ollama
-        		  :chat-model "mistral:7b"
-        		  :embedding-model "mistral:7b"))
+            ("deepseek-r1" . (make-llm-ollama
+        		      :chat-model "deepseek-r1:8b"
+        		      :embedding-model "deepseek-r1:8b"))
             ("qwen-coder" . (make-llm-ollama
         		     :chat-model "qwen2.5-coder:latest"
         		     :embedding-model "qwen2.5-coder:latest "))))

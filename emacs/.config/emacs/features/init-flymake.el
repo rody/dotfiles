@@ -27,5 +27,16 @@
                  (slot . 1)
                  (window-height . 20))))
 
+(use-package flymake-eslint
+  :ensure t
+  :after 'flymake
+  ;; :hook ((tsx-ts-mode . flymake)
+  ;;        (typescript-ts-mode . flymake)
+  ;;        (javascript-mode . flymake))
+  :config
+  ;; If Emacs is compiled with JSON support
+  (setq flymake-eslint-prefer-json-diagnostics t))
+
+
 (provide 'init-flymake)
 ;;; init-flymake.el ends here

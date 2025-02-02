@@ -34,7 +34,7 @@
 (rody--require-with-time 'init-maintenance)
 
 (rody--require-with-time 'init-emacs)
-(rody--require-with-time 'init-server)
+;; (rody--require-with-time 'init-server)
 ;; (rody--require-with-time 'init-nano)
 (rody--require-with-time 'init-fontaine)
 (rody--require-with-time 'init-ligature)
