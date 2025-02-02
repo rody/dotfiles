@@ -4,16 +4,16 @@
 
 (use-package corfu
   :ensure t
-  :defer 4
+  :defer t
   :custom
   (corfu-popupinfo-delay 0.5)
   (corfu-preview-current nil)
   (corfu-cycle t)
   (corfu-echo-documentation t)
   (corfu-scroll-margin 5)
-  :config
-  (global-corfu-mode)
-  (corfu-popupinfo-mode)
+  :init
+  (global-corfu-mode +1)
+  (corfu-popupinfo-mode +1)
   )
 
 (use-package kind-icon

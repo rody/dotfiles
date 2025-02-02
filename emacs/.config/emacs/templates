@@ -88,14 +88,17 @@ go-mode go-ts-mode
 (main "func main() {" n> q n "}")
 (iferr "if err != nil {" n > "return err" > n "}" > n> n q)
 (main-with-flags "func main() {
-        err := run(os.Args, os.Stdout, os.Stderr, os.Stdin)
+        err := run(os.Args)
         if err != nil {
                 fmt.Fprintf(os.Stderr, \"error: %s\\n\", err)
                 os.Exit(1)
         }
 }
 
-func run(args []string, wout, werr io.Writer, in io.Reader) error {" n> q n> "return nil" n> "}" n)
+func run(args []string) error {" n> q n> "return nil" n> "}" n)
+
+(debug "fmt.Printf(\"%#v\n\", " q ")")
+(handlef "func(w http.ResponseWriter, r *http.Request) {" n> q n> "}")
 
                                         ; json ---------------------------------------------------------------------------
 json-mode json-ts-mode
