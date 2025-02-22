@@ -4,7 +4,7 @@
 
 (use-package olivetti
   :ensure t
-  :hook ((org-mode . olivetti-mode)))
+  :bind (("C-c t z" . olivetti-mode)))
 
 (provide 'init-olivetti)
 ;;; init-olivetti.el ends here

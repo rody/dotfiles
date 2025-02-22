@@ -8,11 +8,13 @@
 ;; init.
 (use-package exec-path-from-shell
   :ensure t
-  :if (not (boundp 'ns-system-appearance))
-  :custom
-  (exec-path-from-shell-variables '("PATH" "MANPATH"))
+  :if (memq window-system '(mac ns x))
   :config
+  (setq exec-path-from-shell-arguments '("-l"))
+  (dolist (var '("SSH_AUTH_SOCK" "SSH_AGENT_PID" "GPG_AGENT_INFO" "LANG" "LC_CTYPE"))
+    (add-to-list 'exec-path-from-shell-variables var))
   (exec-path-from-shell-initialize)
+
   (if (and (fboundp 'native-comp-available-p)
            (native-comp-available-p))
       (progn

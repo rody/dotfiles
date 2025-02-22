@@ -5,8 +5,9 @@
 (use-package server
   :ensure nil
   :defer t
-  :config
-  ;;(setq server-socket-dir "~/.local/share/emacs/server")
+  :init
+  (setq server-socket-dir "~/.local/share/emacs/server")
+  (require 'server)
   (unless server-process
     (server-start)))
 

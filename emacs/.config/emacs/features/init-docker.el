@@ -3,7 +3,7 @@
 ;;; Code:
 
 ;; taken from https://www.rahuljuliato.com/posts/emacs-docker-podman
-(defcustom rody-docker-executable 'podman
+(defcustom rody-docker-executable 'docker
   "The executable to be used with docker-mode."
   :type '(choice
 	  (const :tag "docker" docker)

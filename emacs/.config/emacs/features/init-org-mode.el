@@ -1,3 +1,4 @@
+
 ;;; init-org-mode.el -- Org mode configuration -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
@@ -10,11 +11,14 @@
          ("C-c n c" . org-capture)
          ("M-n" . org-capture)
          :map org-mode-map
-         ("C-c t o i" . org-toggle-inline-image)
+         ("C-c t o i" . org-toggle-inline-images)
          ("C-c t o l" . org-toggle-link-display)
-         ("C-c t o p" . org-toggle-pretty-entities))
+         ("C-c t o p" . org-toggle-pretty-entities)
+         ("C-c t o t" . org-toggle-tag))
 
   :custom
+  (org-cycle-separator-lines -1) ;; keep empty lines when folding levels
+  (org-startup-indented t)
   (org-directory "~/org")
   (org-auto-align-tags nil)
   (org-tags-column 0)
@@ -30,9 +34,9 @@
   (org-confirm-babel-evaluate nil)
   (org-use-sub-superscripts '{})
   (org-log-done 'time) ;; when a TODO is set to a done state, record a timestamp
-
   (org-todo-keywords
-   '((sequence "TODO" "NEXT" "WAITING" "MAYBE" "|" "DONE" "CANCEL" "DELEGATED")))
+   '((sequence "TODO" "NEXT" "IN PROGRESS" "WAITING" "MAYBE" "|" "DONE" "CANCEL" "DELEGATED")))
+
 
   ;; org-agenda
   (org-agenda-files (directory-files-recursively org-directory "\\.org$"))
@@ -50,6 +54,11 @@
   ;;(org-agenda-time-grid '((daily) () "" ""))
   (org-agenda-compact-blocks t)
   (org-agenda-start-with-log-mode t)
+  ;; speed up options
+  (org-agenda-inhibit-startup t)
+  (org-agenda-dim-blocked-tasks nil)
+  (org-agenda-use-tag-inheritance nil)
+  (org-agenda-ignore-properties '(stats))
 
   ;; org capture
   (org-default-notes-file "~/org/todo.org")
@@ -75,6 +84,12 @@
       "** NEXT %?\n%U\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
      ))
   )
+
+(use-package org-agenda
+  :ensure nil
+  :after org
+  :bind (("M-j". #'org-agenda-clock-goto)
+         ("M-J" . #'bookmark-jump)))
 
 (use-package org-super-agenda
   :ensure t
@@ -175,13 +190,19 @@
 
 (use-package ox-pandoc
   :after org
+  :ensure t)
+
+(use-package ox-typst
   :ensure t
   :after org)
 
 (use-package org-modern
   :ensure t
+  :after org
   :hook ((org-mode . org-modern-mode)
-         (org-agenda-finalize . org-modern-agenda)))
+         (org-agenda-finalize . org-modern-agenda))
+  :config
+  (setq org-modern-star 'replace))
 
 (use-package org-appear
   :ensure t
@@ -192,9 +213,6 @@
   :ensure t
   :after org)
 
-(use-package org-appear
-  :ensure t
-  :hook ((org-mode . org-appear-mode)))
 
 ;; long-table-edit support for org and markdown
 (use-package lte

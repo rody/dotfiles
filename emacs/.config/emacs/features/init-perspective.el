@@ -6,8 +6,7 @@
   :ensure t
   :defer t
   :hook (kill-emacs . persp-state-save)
-  :bind (("C-x C-b" . persp-list-buffers)
-         ("C-x b" .   persp-switch-to-buffer*)
+  :bind (("C-x b" .   persp-switch-to-buffer*)
          ("C-x k" .   persp-kill-buffer*))
   :custom
   (persp-mode-prefix-key (kbd "C-z"))  ; pick your own prefix key here

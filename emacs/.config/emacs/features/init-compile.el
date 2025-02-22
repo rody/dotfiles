@@ -22,5 +22,30 @@
                  (window-parameters
                   (no-delete-other-windows . nil)))))
 
+
+(use-package compile-multi
+  :ensure t
+  :demand t
+  :config
+  (setq compile-multi-config '((go-ts-mode
+                                ("go:vet" . "go vet")
+                                ("go:build" . "go build"))
+                               ("_test.go\\'"
+                                ("go:test" . "go test"))))
+  )
+
+(use-package consult-compile-multi
+  :ensure t
+  :after compile-multi
+  :demand t
+  :config (consult-compile-multi-mode))
+
+(use-package compile-multi-embark
+  :ensure t
+  :after embark
+  :after compile-multi
+  :demand t
+  :config (compile-multi-embark-mode +1))
+
 (provide 'init-compile)
 ;;; init-compile.el ends here

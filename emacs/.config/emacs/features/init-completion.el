@@ -50,6 +50,7 @@
 
 (use-package vertico-directory
   :after vertico
+  :defer t
   :ensure nil
   ;; More convenient directory navigation commands
   :bind (:map vertico-map

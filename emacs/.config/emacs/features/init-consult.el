@@ -67,7 +67,8 @@
   :ensure t
   :after consult
   :bind (("C-x p f" . consult-project-extra-find)
-         ("C-x p F" . consult-project-extra-find-other-window)))
+         ("C-x p F" . consult-project-extra-find-other-window)
+         ("C-c p f" . #'cape-file)))
 
 (use-package consult-dir
   :ensure t

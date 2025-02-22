@@ -2,16 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package consult-project-extra
-  :ensure t
-  :bind ("C-c p f" . consult-project-extra-find))
-
 (use-package project
   :ensure nil
   :bind (:map project-prefix-map
-              ("m" . magit-project-status)
-              ("f" . project-find-file))
-
+              ("m" . magit-project-status))
   :commands (project-dired
              project-shell
              project-eshell
@@ -39,7 +33,15 @@
              project-or-external-find-regexp
              project-remember-projects-under
              project-execute-extended-command
-             project-display-buffer-other-frame))
+             project-display-buffer-other-frame)
+  :config
+  (setq project-switch-commands
+        '((project-find-file "Find file" "f")
+          (project-find-regexp "Find regexp" "r")
+          (project-find-dir "Find directory" "d")
+          (project-vc-dir "VC-Dir" "v")
+          (project-vterm "Vterm" "t"))
+        ))
 
 (provide 'init-project)
 ;;; init-project.el ends here

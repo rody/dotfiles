@@ -34,8 +34,7 @@
 (rody--require-with-time 'init-maintenance)
 
 (rody--require-with-time 'init-emacs)
-;; (rody--require-with-time 'init-server)
-;; (rody--require-with-time 'init-nano)
+(rody--require-with-time 'init-server)
 (rody--require-with-time 'init-fontaine)
 (rody--require-with-time 'init-ligature)
 (rody--require-with-time 'init-image)
@@ -65,6 +64,7 @@
 (rody--require-with-time 'init-text-mode)
 (rody--require-with-time 'init-nov)
 (rody--require-with-time 'init-org-remark)
+(rody--require-with-time 'init-org-re-reveal)
 (rody--require-with-time 'init-elfeed)
 (rody--require-with-time 'init-repeat)
 (rody--require-with-time 'init-indent-bars)
@@ -75,11 +75,20 @@
 (rody--require-with-time 'init-avy)
 (rody--require-with-time 'init-olivetti)
 (rody--require-with-time 'init-editorconfig)
+(rody--require-with-time 'init-writeroom)
+(rody--require-with-time 'init-pdf-tools)
+(rody--require-with-time 'init-info)
+(rody--require-with-time 'init-man)
+(rody--require-with-time 'init-ediff)
 
 ;; Theme, colors...
+;; (rody--require-with-time 'init-nano)
 (rody--require-with-time 'init-modus-theme)
+(rody--require-with-time 'init-doom-themes)
+(rody--require-with-time 'init-doom-modeline)
 (rody--require-with-time 'init-pulsar)
 (rody--require-with-time 'init-dimmer)
+(rody--require-with-time 'init-icons)
 
 
 ;; inputs
@@ -119,15 +128,13 @@
 (rody--require-with-time 'init-plantuml)
 (rody--require-with-time 'init-emmet)
 (rody--require-with-time 'init-css)
+(rody--require-with-time 'init-typst)
 
 ;; AI/LLM
 (rody--require-with-time 'init-ellama)
 (rody--require-with-time 'init-gptel)
 
 ;; misc
-(rody--require-with-time 'init-icons)
-(rody--require-with-time 'init-doom-modeline)
-(rody--require-with-time 'init-doom-themes)
 (rody--require-with-time 'init-emms)
 (rody--require-with-time 'init-ledger)
 

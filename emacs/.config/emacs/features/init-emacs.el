@@ -4,7 +4,11 @@
 
 (use-package emacs
   :ensure nil
+  :demand t
+  :bind (("M-u" . upcase-dwim)
+         ("M-l" . downcase-dwim))
   :custom
+  (bookmark-save-flag 1)
   (byte-compile-warnings nil)
   (use-short-answers t)
   (warning-minimum-level :error)
@@ -19,6 +23,7 @@
   (unbind-key "<C-wheel-up>") ;; ditto
   (unbind-key "s-n") ;; make-frame
   (unbind-key "C-x C-q") ;; read-only-mode
+  (unbind-key "s-t") ;; font selection
   )
 
 (provide 'init-emacs)

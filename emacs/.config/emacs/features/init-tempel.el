@@ -4,8 +4,8 @@
 
 (use-package tempel
   :ensure t
-  :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
-         ("M-*" . tempel-insert))
+  :bind (("M-*" . tempel-complete) ;; Alternative tempel-expand
+         ("M-+" . tempel-insert))
   :preface
   (defun rody-open-template-file()
     "Open the tempel file for editing."

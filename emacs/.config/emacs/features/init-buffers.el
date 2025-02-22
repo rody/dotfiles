@@ -2,15 +2,23 @@
 ;;; Commentary:
 ;;; Code:
 
+(use-package ibuffer
+  :ensure nil
+  :hook ((ibuffer-mode . hl-line-mode)
+         (ibuffer-mode . ibuffer-auto-mode))
+  :bind (("C-x C-b" . #'ibuffer)
+         :map ibuffer-mode-map
+         ("{" . #'ibuffer-backwards-next-marked)
+         ("}" . #'ibuffer-forward-next-marked)
+         ("[" . #'ibuffer-backward-filter-group)
+         ("]" . #'ibuffer-forward-filter-group)
+         ("$" . #'ibuffer-toggle-filter-group)))
+
 (use-package uniquify
   :ensure nil
   :custom
   (uniquify-buffer-name-style 'forward))
 
-(use-package ibuffer
-  :ensure nil
-  :bind (:map ibuffer-mode-map)
-  ("C-k" . ibuffer-do-delete))
 
 (provide 'init-buffers)
 ;;; init-buffers.el ends here

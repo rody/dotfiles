@@ -4,6 +4,7 @@
 
 (use-package meow
   :ensure t
+  ;;:defer t
   :custom
   (meow-use-cursor-position-hack t)
   (meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
@@ -13,7 +14,8 @@
                          (help-mode . normal)
                          (helpful-mode . normal)
                          (nov-mode . normal)))
-  :config
+  :init
+  (require 'meow)
   (defun rody-meow-setup()
     "Setup meow bindings."
     (meow-motion-overwrite-define-key
@@ -104,7 +106,7 @@
     )
 
   (rody-meow-setup)
-  (meow-global-mode 1))
+  (meow-global-mode +1))
 
 (use-package meow-tree-sitter
   :ensure t

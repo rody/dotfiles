@@ -2,16 +2,19 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package zig-mode
+(use-package zig-ts-mode
   :ensure t
   :ensure-system-package ((zig . "brew install zig")
                           (zls . "brew install zls"))
-  :mode (("\\.zig\\'" . zig-mode))
-  :hook ((zig-mode . eglot-ensure))
+  :mode (("\\.zig\\'" . zig-ts-mode))
+  :hook ((zig-ts-mode . eglot-ensure))
   :init
   (with-eval-after-load 'eglot
     (add-to-list 'eglot-server-programs
-                 '((zig-mode) "zls"))))
+                 '((zig-mode) "zls")))
+  (with-eval-after-load 'treesit
+    (add-to-list 'treesit-language-source-alist
+                 '(zig "https://github.com/maxxnino/tree-sitter-zig"))))
 
 (provide 'init-zig)
 ;;; init-zig.el ends here

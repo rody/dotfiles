@@ -11,7 +11,8 @@
 
 (use-package imenu-list
   :ensure t
-  :bind (("C-'" . imenu-list-smart-toggle))
+  :bind (("C-'" . imenu-list-smart-toggle)
+         ("C-c t m" . imenu-list-smart-toggle))
   :custom
   (imenu-list-focus-after-activation t))
 

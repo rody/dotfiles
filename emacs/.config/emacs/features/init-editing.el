@@ -29,13 +29,10 @@
   :hook ((gfm-view-mode . visual-line-fill-column-mode)
          (gfm-mode . visual-line-fill-column-mode)
          (markdown-mode . visual-line-fill-column-mode)
-         (org-mode . visual-line-fill-column-mode))
-  :config
-  (setq-default visual-fill-column-center-text t))
+         (org-mode . visual-line-fill-column-mode)))
 
 (use-package autorevert
   :ensure nil
-  :defer t
   :custom
   (global-auto-revert-non-file-buffers t)
   :init

@@ -19,7 +19,7 @@
 ;; Modus Themes
 (use-package modus-themes
   :ensure t
-  ;:defer t
+  :defer t
   :custom
   (modus-themes-italic-constructs t)
   (modus-themes-bold-constructs t)
@@ -32,14 +32,14 @@
   (modus-themes-variable-pitch-ui t)
   (modus-themes-to-toggle
    '(modus-operandi-deuteranopia modus-vivendi-deuteranopia))
-  (modus-themes-headings
-      '((1 . (variable-pitch 1.5))
-        (2 . (1.3))
-        (agenda-date . (1.3))
-        (agenda-structure . (variable-pitch light 1.8))
-        (t . (1.1))))
-  :config
-  (load-theme 'modus-operandi-deuteranopia t))
+  ;; (modus-themes-headings
+  ;;  '((1 . (variable-pitch 1.2))
+  ;;    (2 . (1.2))
+  ;;    (agenda-date . (1.3))
+  ;;    (agenda-structure . (variable-pitch light 1.8))
+  ;;    (t . (1.1))))
+  :init
+  (load-theme 'modus-vivendi-tinted t))
 
 (provide 'init-modus-theme)
 ;;; init-modus-theme.el ends here

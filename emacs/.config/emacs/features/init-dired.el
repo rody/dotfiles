@@ -13,7 +13,7 @@
   ;; ask about making backup before overwriting files
   (dired-backup-overwrite t)
 
-  (dired-auto-revert-buffer #'dired-buffer-stale-p)
+  (dired-auto-revert-buffer t)
   (dired-create-destination-dir 'always)
   (delete-by-moving-to-trash t)
   (dired-listing-switches
@@ -33,12 +33,15 @@
 (use-package dirvish
   :ensure t
   :defer t
-  :demand t
-  :hook (after-init . dirvish-override-dired-mode)
+  ;; :demand t
+  ;; :hook (after-init . dirvish-override-dired-mode)
   ;;:commands (dirvish)
   :ensure-system-package ((ffmpegthumbnailer . "brew install ffmpegthumbnailer")
-                          (mediainfo . "brew install mediainfo"))
-  :bind (("C-c t d" . dirvish-side)
+                          (mediainfo . "brew install mediainfo")
+                          (fd . "brew install fd")
+                          (gls . "brew install coreutils"))
+  :bind (("C-c t f" . dirvish-side)
+         ("C-x d" . dirvish)
          :map dirvish-mode-map
          ("a" . dirvish-quick-access)
          ("f" . dirvish-file-info-menu)
@@ -68,8 +71,8 @@
      file-time
      file-size))
   :init
-  ;; (dirvish-override-dired-mode)
-  ;; (dirvish-side-follow-mode +1) ; similar to `treemacs-follow-mode'
+  (dirvish-override-dired-mode)
+  (dirvish-side-follow-mode +1) ; similar to `treemacs-follow-mode'
   )
 
 (provide 'init-dired)

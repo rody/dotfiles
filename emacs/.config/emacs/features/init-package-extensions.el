@@ -4,6 +4,7 @@
 
 (use-package gcmh
   :ensure t
+  :disabled t
   :init
   (gcmh-mode +1))
 

@@ -38,13 +38,19 @@
 	(message "`%s' parser was installed." lang)
 	(sit-for 0.75)))))
 
-
 (use-package treesit-fold
-  :ensure nil
-  :load-path "~/workspaces/emacs/treesit-fold"
+  :ensure t
   :hook ((go-ts-mode . treesit-fold-mode)
          (apex-ts-mode . treesit-fold-mode)
-         (json-ts-mode . treesit-fold-mode)))
+         (json-ts-mode . treesit-fold-mode)
+         (zig-ts-mode . treesit-fold-mode))
+  :bind (:map treesit-fold-mode-map
+              ("<backtab>" . #'treesit-fold-toggle)))
+
+(use-package treesit-fold-indicators
+  :ensure nil
+  :after treesit-fold
+  :bind (("C-c t F" . treesit-fold-indicators-mode)))
 
 (provide 'init-treesit)
 ;;; init-treesit.el ends here

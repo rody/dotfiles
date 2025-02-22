@@ -6,7 +6,9 @@
   :ensure t
   :bind (("C-x g " . magit-status)
          ("C-x M-g" . magit-dispatch)
-         ("C-c M-g" . magit-file-dispatch)))
+         ("C-c M-g" . magit-file-dispatch))
+  :config
+  (setq magit-save-repository-buffers 'dontask))
 
 (use-package forge
   :ensure t
@@ -23,7 +25,7 @@
 (use-package magit-todos
   :ensure t
   :after magit
-  :ensure-system-package (rg . ripgrep)
+  :ensure-system-package (rg . "brew install ripgrep")
   :config
   (magit-todos-mode 1))
 

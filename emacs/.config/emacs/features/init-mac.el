@@ -2,12 +2,31 @@
 ;;; Commentary:
 ;;; Code:
 
+(use-package emacs
+  :ensure nil
+  :if (eq system-type 'darwin)
+  :init
+  ;; modifier commands
+  ;;(setq mac-command-modifier 'super)  ; command as super
+  ;;(setq mac-option-modifier 'meta)    ; option as meta
+  ;;(setq mac-control-modifier 'control); control as control
+  ;;(setq ns-function-modifier 'hyper)  ; Fn key as hyper
 
-(when (memq window-system '(mac ns))
-  (setq mac-command-modifier 'super)  ; command as super
-  (setq mac-option-modifier 'meta)    ; option as meta
-  (setq mac-control-modifier 'control); control as control
-  (setq ns-function-modifier 'hyper)  ; Fn key as hyper
+  ;; use macOS keychain
+  (with-eval-after-load 'auth-source
+    (add-to-list 'auth-sources 'macos-keychain-internet)
+    (add-to-list 'auth-sources 'macos-keychain-generic)))
+
+
+(use-package emacs
+  :ensure nil
+  :if (eq window-system 'ns)
+  :init
+  ;; modifier commands
+  ;;(setq mac-command-modifier 'super)  ; command as super
+  ;;(setq mac-option-modifier 'meta)    ; option as meta
+  ;;(setq mac-control-modifier 'control); control as control
+  ;;(setq ns-function-modifier 'hyper)  ; Fn key as hyper
 
   ;; No icon on window.
   (setq ns-use-proxy-icon nil)
@@ -21,21 +40,11 @@
   ;; Transparent titlebar on macOS.
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
   (add-to-list 'default-frame-alist '(ns-appearance . dark))
-
-  ;; modifier commands
-
-  ;; use macOS keychain
-  (with-eval-after-load 'auth-source
-    (add-to-list 'auth-sources 'macos-keychain-internet)
-    (add-to-list 'auth-sources 'macos-keychain-generic))
-
-  ;; Want menu bar on macOS.
+  ;; Want menu bar on macOS GUI.
   (use-package menu-bar
     :ensure nil
-    :defer t
     :init
-    (menu-bar-mode +1))
-  )
+    (menu-bar-mode +1)))
 
 (provide 'init-mac)
 ;;; init-mac.el ends here
