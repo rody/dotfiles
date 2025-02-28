@@ -4,23 +4,16 @@
 
 (use-package flymake
   :ensure t
-  ;;  :pin melpa
   :hook (prog-mode . flymake-mode)
   :bind (:map flymake-mode-map
               ("C-c ! n" . flymake-goto-next-error)
               ("C-c ! p" . flymake-goto-previous-error)
               ("C-c ! l" . flymake-show-buffer-diagnostics))
-  :custom
+  :config
   ;; wait 5 seconds after I stop typing to run flymake
-  (flymake-no-changes-timeout 5)
-  ;; (flymake-indicator-type 'margins)
-  ;; (flymake-margin-indicators-string
-  ;;  `((error ,(nerd-icons-faicon "nf-fa-remove_sign")); compilation-error)
-  ;;    (warning ,(nerd-icons-faicon "nf-fa-warning")); compilation-warning)
-  ;;    (note ,(nerd-icons-faicon "nf-fa-circle_info")))); compilation-info)))
-  (flymake-show-diagnostics-at-end-of-line nil) ;; other option: 'short
-
-  :init
+  (setq flymake-no-changes-timeout 5)
+  (setq flymake-show-diagnostics-at-end-of-line nil) ;; other option: 'short
+  :config
   (add-to-list 'display-buffer-alist
                '("\\*flymake diagnostics" (display-buffer-reuse-window display-buffer-in-side-window)
                  (side . bottom)
@@ -29,7 +22,7 @@
 
 (use-package flymake-eslint
   :ensure t
-  :after 'flymake
+  :after flymake
   ;; :hook ((tsx-ts-mode . flymake)
   ;;        (typescript-ts-mode . flymake)
   ;;        (javascript-mode . flymake))

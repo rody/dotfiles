@@ -9,7 +9,7 @@
   :mode ("\\.scad\\'" . scad-mode)
   :custom
   (scad-command "/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD")
-  :init
+  :config
   (with-eval-after-load 'eglot
     (add-to-list 'eglot-server-programs
                  '(scad-mode . ("openscad-lsp")))))

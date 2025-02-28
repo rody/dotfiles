@@ -4,7 +4,7 @@
 
 (use-package no-littering
   :ensure t
-  :init
+  :config
   (with-eval-after-load 'recentf
     (add-to-list 'recentf-exclude
                  (recentf-expand-file-name no-littering-var-directory))

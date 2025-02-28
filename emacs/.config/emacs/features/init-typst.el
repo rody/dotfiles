@@ -4,18 +4,19 @@
 
 (use-package typst-ts-mode
   :ensure t
-  :after treesit
   :mode (("\\.typst\\'" . typst-ts-mode)
          ("\\.typ\\'" . typst-ts-mode))
   :hook ((typst-ts-mode . eglot-ensure)
          (typst-ts-mode . electric-pair-mode)
          (typst-ts-mode . apheleia-mode))
-  :init
-  (add-to-list 'treesit-language-source-alist
-               '(typst "https://github.com/uben0/tree-sitter-typst"))
+  :config
+  (with-eval-after-load 'treesit
+    (add-to-list 'treesit-language-source-alist
+                 '(typst "https://github.com/uben0/tree-sitter-typst")))
 
   (with-eval-after-load 'eglot
     (add-to-list 'eglot-server-programs '(typst-ts-mode  "tinymist" "lsp")))
+
   (with-eval-after-load 'apheleia
     (setf (alist-get 'typstyle apheleia-formatters)
           '("typstyle"))

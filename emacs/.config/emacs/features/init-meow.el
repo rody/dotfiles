@@ -4,18 +4,18 @@
 
 (use-package meow
   :ensure t
-  ;;:defer t
-  :custom
-  (meow-use-cursor-position-hack t)
-  (meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
-  (meow-mode-state-list'((vterm-mode . insert)
-                         (prog-mode . normal)
-                         (ediff-mode . motion)
-                         (help-mode . normal)
-                         (helpful-mode . normal)
-                         (nov-mode . normal)))
-  :init
-  (require 'meow)
+  :defer 0.5
+  :config
+  (setq meow-use-cursor-position-hack t)
+  (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
+  (setq meow-mode-state-list'((vterm-mode . insert)
+                              (prog-mode . normal)
+                              (ediff-mode . motion)
+                              (help-mode . normal)
+                              (helpful-mode . normal)
+                              (nov-mode . normal)))
+
+
   (defun rody-meow-setup()
     "Setup meow bindings."
     (meow-motion-overwrite-define-key
@@ -110,7 +110,7 @@
 
 (use-package meow-tree-sitter
   :ensure t
-  :after meow
+  :after (meow treesit)
   :config
   (meow-tree-sitter-register-defaults))
 

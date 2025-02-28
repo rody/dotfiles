@@ -23,7 +23,6 @@
 
 
 ;; Need these loaded ASAP (many subsequent libraries depend on them).
-(rody--require-with-time 'init-package-extensions)
 (rody--require-with-time 'init-exec-path-from-shell)
 (rody--require-with-time 'init-xdg)
 (rody--require-with-time 'init-no-littering)
@@ -50,7 +49,10 @@
 (rody--require-with-time 'init-cape)
 (rody--require-with-time 'init-consult)
 (rody--require-with-time 'init-rg)
-(rody--require-with-time 'init-completion)
+(rody--require-with-time 'init-vertico)
+(rody--require-with-time 'init-orderless)
+(rody--require-with-time 'init-marginalia)
+(rody--require-with-time 'init-embark)
 (rody--require-with-time 'init-tempel)
 (rody--require-with-time 'init-treesit)
 (rody--require-with-time 'init-prog)
@@ -82,14 +84,13 @@
 (rody--require-with-time 'init-ediff)
 
 ;; Theme, colors...
-;; (rody--require-with-time 'init-nano)
 (rody--require-with-time 'init-modus-theme)
 (rody--require-with-time 'init-doom-themes)
 (rody--require-with-time 'init-doom-modeline)
 (rody--require-with-time 'init-pulsar)
 (rody--require-with-time 'init-dimmer)
 (rody--require-with-time 'init-icons)
-
+(rody--require-with-time 'init-ultra-scroll)
 
 ;; inputs
 (rody--require-with-time 'init-meow)
@@ -131,12 +132,15 @@
 (rody--require-with-time 'init-typst)
 
 ;; AI/LLM
-(rody--require-with-time 'init-ellama)
 (rody--require-with-time 'init-gptel)
+(rody--require-with-time 'init-ollama-buddy)
 
 ;; misc
 (rody--require-with-time 'init-emms)
 (rody--require-with-time 'init-ledger)
+(rody--require-with-time 'init-kubernetes)
+(rody--require-with-time 'init-keyboard-quit-dwim)
+(rody--require-with-time 'init-hl-line)
 
 (provide 'init-features)
 ;;; init-features.el ends here

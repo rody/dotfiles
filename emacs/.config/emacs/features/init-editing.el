@@ -26,6 +26,7 @@
 
 (use-package visual-fill-column
   :ensure t
+  :defer t
   :hook ((gfm-view-mode . visual-line-fill-column-mode)
          (gfm-mode . visual-line-fill-column-mode)
          (markdown-mode . visual-line-fill-column-mode)
@@ -33,17 +34,18 @@
 
 (use-package autorevert
   :ensure nil
+  :hook ((after-init . global-auto-revert-mode))
   :custom
-  (global-auto-revert-non-file-buffers t)
-  :init
-  (global-auto-revert-mode +1))
+  (global-auto-revert-non-file-buffers t))
+;; :init
+;; (global-auto-revert-mode +1))
 
 (use-package vundo
   :ensure t
-  :init
+  :commands (vundo)
+  :custom
   (setq undo-limit 1000000)
-  (setq undo-strong-limit (* 2 undo-limit))
-  :commands (vundo))
+  (setq undo-strong-limit (* 2 undo-limit)))
 
 (provide 'init-editing)
 ;;; init-editing.el ends here

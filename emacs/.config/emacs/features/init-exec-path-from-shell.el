@@ -2,7 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-
 ;; Ask shell for PATH, MANPATH, and exec-path and update Emacs environment.
 ;; We do this early on as we assert binaries are installed throughout
 ;; init.

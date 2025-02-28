@@ -2,24 +2,26 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package all-the-icons
-  :if (display-graphic-p)
-  :ensure t
-  :defer t
-  )
-
-(use-package all-the-icons-completion
-  :if (display-graphic-p)
-  :defer t
-  :ensure t
-  :init
-  (all-the-icons-completion-mode)
-  (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup))
-
 (use-package nerd-icons
-  :if (display-graphic-p)
+  :ensure t)
+
+(use-package nerd-icons-completion
   :ensure t
-  :defer t)
+  :after marginalia
+  :config
+  (nerd-icons-completion-mode)
+  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
+
+(use-package nerd-icons-corfu
+  :ensure t
+  :after corfu
+  :config
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
+(use-package nerd-icons-dired
+  :ensure t
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
 
 (provide 'init-icons)
 ;;; init-icons.el ends here

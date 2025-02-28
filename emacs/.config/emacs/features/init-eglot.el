@@ -22,17 +22,22 @@
          ("C-c c l f" . eglot-format))
   :init
   (setq-default eglot-workspace-configuration
-                '((:gopls .
-                          ((staticcheck . t)
-                           (gofumpt . t)
-                           (analyses
-                            (unreachable . t)
-                            (unusedparams . t)
-                            (unusedwrite . t)
-                            (useany . t)
-                            (unusedvariable . t)
-                            (shadow . t))
-                           ))))
+                '(:gopls (
+                          :usePlaceholders t
+                          :gofumpt t
+                          :matcher "Fuzzy"
+                          :analyses (
+                                     :staticcheck t
+                                     :unreachable t
+                                     :unusedvariable t))
+                         :yaml (
+                                :format (
+                                         :enable t)
+                                :validate t
+                                :hover t
+                                :completion t
+                                :schemaStore (:enable t)
+                                )))
   :hook ((go-ts-mode . rody--eglot-import-and-format-on-save)
          (rust-ts-mode . rody--eglot-format-on-save)
          (json-ts-mode . rody--eglot-format-on-save)
@@ -42,17 +47,10 @@
          (css-ts-mode . eglot-ensure)
          (zig-ts-mode . rody--eglot-format-on-save))
   :config
-  ;; from
-  ;; https://www.reddit.com/r/emacs/comments/1447fy2/looking_for_help_in_improving_typescript_eglot/
-  ;; -- speed up?
-  (declare-function jsonrpc--log-event "jsonrpc")
-  (fset #'jsonrpc--log-event #'ignore)
-
-  ;; from https://www.reddit.com/r/emacs/comments/1b25904/is_there_anything_i_can_do_to_make_eglots/
-  (setq eglot-events-buffer-size 0)
-
   (add-to-list 'eglot-server-programs
                '(terraform-mode "terraform-ls" "serve"))
+  (add-to-list 'eglot-server-programs
+               '((zig-mode) "zls"))
   (add-to-list 'eglot-server-programs
                '(templ-ts-mode "templ" "lsp")))
 

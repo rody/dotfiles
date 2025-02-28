@@ -54,10 +54,10 @@
   (flymake-pmd-use-pmd-6 nil)
   (flymake-pmd-use-eglot t))
 
-(use-package sf-mode
-  :if (file-directory-p "~/workspaces/emacs/sf-mode")
-  :ensure nil
-  :load-path "~/workspaces/emacs/sf-mode")
+;; (use-package sf-mode
+;;   :if (file-directory-p "~/workspaces/emacs/sf-mode")
+;;   :ensure nil
+;;   :load-path "~/workspaces/emacs/sf-mode")
 
 (provide 'init-salesforce)
 ;;; init-salesforce.el ends here

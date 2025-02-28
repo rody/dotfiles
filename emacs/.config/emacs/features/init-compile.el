@@ -25,7 +25,7 @@
 
 (use-package compile-multi
   :ensure t
-  :demand t
+  :after compile
   :config
   (setq compile-multi-config '((go-ts-mode
                                 ("go:vet" . "go vet")

@@ -15,7 +15,6 @@
   :commands (jq-interactively)
   :init
   (use-package ob-jq
-    :after org
     :ensure nil
     :commands (org-babel-execute:jq)))
 

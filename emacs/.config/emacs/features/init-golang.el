@@ -10,9 +10,10 @@
                           (gofumpt . "go install mvdan.cc/gofumpt@latest"))
   :mode (("\\.go\\'" . go-ts-mode))
   :config
-  (with-eval-after-load 'treesit
-    (add-to-list 'treesit-language-source-alist
-                 '(go "https://github.com/tree-sitter/tree-sitter-go"))))
+  ;; (with-eval-after-load 'treesit
+  ;;   (add-to-list 'treesit-language-source-alist
+  ;;                '(go "https://github.com/tree-sitter/tree-sitter-go"))))
+  )
 
 (use-package go-mod-ts-mode
   :ensure nil
@@ -33,7 +34,7 @@
   :ensure t
   :ensure-system-package ((templ . "go install github.com/a-h/templ/cmd/templ@latest"))
   :mode (("\\.templ\\'" . templ-ts-mode))
-  :init
+  :config
   (with-eval-after-load 'treesit
     (add-to-list 'treesit-language-source-alist
                  '(templ "https://github.com/vrischmann/tree-sitter-templ")))

@@ -4,8 +4,7 @@
 
 (use-package info
   :ensure nil
-  :hook ((Info-mode . hl-line-mode)
-         (Info-mode . scroll-lock-mode))
+  :hook ((Info-mode . scroll-lock-mode))
   :bind (("C-h i" . info)
          :map Info-mode-map
          ("M-[" . #'Info-history-back)

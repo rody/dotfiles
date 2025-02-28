@@ -4,14 +4,13 @@
 
 (use-package which-key
   :ensure t
-  :defer t
-  :custom
+  :defer 1
+  :config
   ;; Make which key panel only appear after C-h.
   ;; Helps with latency.
-  (which-key-show-early-on-C-h t)
-  (which-key-idle-delay 1)
-  (which-key-idle-secondary-delay (float 0.05))
-  :init
+  (setq which-key-show-early-on-C-h t)
+  (setq which-key-idle-delay 1)
+  (setq which-key-idle-secondary-delay (float 0.05))
   (which-key-mode +1))
 
 (provide 'init-which-key)

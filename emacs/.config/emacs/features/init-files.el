@@ -45,25 +45,5 @@
     (setq auto-save-file-name-transforms
           `((".*" ,save-files-directory t)))))
 
-(use-package ffap
-  ;; Find File at Point
-  :disabled t
-  :defer t
-  :init
-  (ffap-bindings))
-
-(defun rody-preview-file-in-quicklook (filename)
-  "Preview FILENAME with macos quicklook."
-  (interactive "fFile: ")
-  (async-shell-command (concat "qlmanage -p " filename)))
-
-(defun rody-preview-current-buffer-in-quicklook ()
-  "Preview buffer with macos quicklook."
-  (interactive)
-  (if (not (buffer-file-name))
-      (error "%s" "Cannot preview a non file buffer")
-    (save-buffer)
-    (rody-preview-file-in-quicklook (buffer-file-name))))
-
 (provide 'init-files)
 ;;; init-files.el ends here

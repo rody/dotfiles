@@ -63,11 +63,11 @@
                '("\\*helpful"
                  (display-buffer-same-window))))
 
-(use-package winner
-  :ensure nil
-  :defer t
-  :init
-  (winner-mode))
+;; (use-package winner
+;;   :ensure nil
+;;   :defer t
+;;   :init
+;;   (winner-mode))
 
 (use-package windmove
   :ensure nil
@@ -83,10 +83,10 @@
 (use-package colorful-mode
   :ensure t
   :bind (("C-c t c" . colorful-mode)
-          :map colorful-mode-map
-          ("C-c c c" . nil)
-          ("C-c c r" . nil)
-          ("C-c c x" . nil)))
+         :map colorful-mode-map
+         ("C-c c c" . nil)
+         ("C-c c r" . nil)
+         ("C-c c x" . nil)))
 
 (provide 'init-ui)
 ;;; init-ui.el ends here

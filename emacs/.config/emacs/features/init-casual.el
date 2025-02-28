@@ -3,7 +3,8 @@
 ;;; Code:
 
 (use-package casual
-  :ensure t)
+  :ensure t
+  :defer 10)
 
 (use-package casual-isearch
   :ensure nil

@@ -4,12 +4,11 @@
 
 (use-package dimmer
   :ensure t
-  :defer t
-  :custom
-  (dimmer-fraction 0.4)
-  (dimmer-adjustment-mode :foreground)
-  (dimmer-use-colorspace :rgb)
-  :init
+  :defer 1
+  :config
+  (setq dimmer-fraction 0.6)
+  (setq dimmer-adjustment-mode :foreground)
+  (setq dimmer-use-colorspace :rgb)
   (dimmer-mode +1))
 
 (provide 'init-dimmer)

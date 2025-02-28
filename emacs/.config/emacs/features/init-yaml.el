@@ -5,19 +5,16 @@
 (use-package yaml-ts-mode
   :ensure nil
   :mode (("\\.ya?ml\\'" . yaml-ts-mode))
-  :hook ((yaml-ts-mode . flymake-mode))
+  :hook ((yaml-ts-mode . eglot-ensure))
   :config
   (with-eval-after-load 'treesit
     (add-to-list 'treesit-language-source-alist
                  '(yaml . ("https://github.com/tree-sitter-grammars/tree-sitter-yaml" "master" "src")))))
 
-(use-package yaml-pro
-  :ensure t
-  :hook ((yaml-ts-mode . yaml-pro-ts-mode)))
 
-(use-package flymake-yamllint
-  :ensure t
-  :hook (yaml-ts-mode . flymake-yamllint-setup))
+;; (use-package flymake-yamllint
+;;   :ensure t
+;;   :hook (yaml-ts-mode . flymake-yamllint-setup))
 
 (provide 'init-yaml)
 ;;; init-yaml.el ends here

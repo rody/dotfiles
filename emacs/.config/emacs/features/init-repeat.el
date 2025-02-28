@@ -3,9 +3,8 @@
 ;;; Code:
 
 (use-package repeat
-  :defer t
   :ensure nil
-  :init
+  :config
   (repeat-mode 1))
 
 (provide 'init-repeat)

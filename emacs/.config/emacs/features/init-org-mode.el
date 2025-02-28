@@ -1,4 +1,3 @@
-
 ;;; init-org-mode.el -- Org mode configuration -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
@@ -15,7 +14,6 @@
          ("C-c t o l" . org-toggle-link-display)
          ("C-c t o p" . org-toggle-pretty-entities)
          ("C-c t o t" . org-toggle-tag))
-
   :custom
   (org-cycle-separator-lines -1) ;; keep empty lines when folding levels
   (org-startup-indented t)
@@ -36,7 +34,6 @@
   (org-log-done 'time) ;; when a TODO is set to a done state, record a timestamp
   (org-todo-keywords
    '((sequence "TODO" "NEXT" "IN PROGRESS" "WAITING" "MAYBE" "|" "DONE" "CANCEL" "DELEGATED")))
-
 
   ;; org-agenda
   (org-agenda-files (directory-files-recursively org-directory "\\.org$"))
@@ -137,7 +134,6 @@
           (:name "Scheduled earlier"
                  :scheduled past)
           ))
-
   (setq org-super-agenda-keep-order t))
 
 (use-package ob-emacs-lisp
@@ -166,6 +162,11 @@
   :custom
   (org-plantuml-exec-mode 'plantuml))
 
+(use-package ob-svgbob
+  :ensure t
+  :commands
+  (org-babel-execute:svgbob))
+
 (use-package ox-epub
   :after org
   :ensure t)
@@ -173,9 +174,9 @@
 (use-package ox-latex
   :ensure nil
   :after org
-  :custom
-  (org-latex-compiler "xelatex")
-  (org-latex-src-block-backend 'listings)
+  :config
+  (setq org-latex-compiler "xelatex")
+  (setq org-latex-src-block-backend 'listings)
   :config
   (use-package engrave-faces
     :ensure t))
@@ -198,7 +199,6 @@
 
 (use-package org-modern
   :ensure t
-  :after org
   :hook ((org-mode . org-modern-mode)
          (org-agenda-finalize . org-modern-agenda))
   :config
@@ -206,18 +206,17 @@
 
 (use-package org-appear
   :ensure t
-  :after org
   :hook (org-mode . org-appear-mode))
 
 (use-package org-tidy
   :ensure t
-  :after org)
-
+  :hook (org-mode . org-tidy-mode))
 
 ;; long-table-edit support for org and markdown
 (use-package lte
   :ensure t
-  :hook ((org-mode markdown-mode) . lte-truncate-table-mode))
+  :hook ((org-mode . lte-truncate-table-mode)
+         (markdown-mode . lte-truncate-table-mode)))
 
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here

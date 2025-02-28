@@ -3,7 +3,6 @@
 ;;; Commentary:
 ;; There is where my Emacs config starts.
 
-
 ;;; Code:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

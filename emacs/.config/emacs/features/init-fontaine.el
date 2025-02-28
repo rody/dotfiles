@@ -2,11 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
-
 (use-package fontaine
   :ensure t
   :if window-system
-  :init
+  :config
   (setq fontaine-presets
         '((font-rody
            :default-family "MonaspiceNe Nerd Font Mono"
@@ -144,14 +143,53 @@
            :italic-height 1.0
 
            :line-spacing nil)
+
           ;; alternate fonts
           (font-iosevka-comfy
-           :default-family "Iosevka Comfy")
+           :default-family "Iosevka Comfy"
+           :variable-pitch-family "Iosevka Comfy")
           (font-iosevka-comfy-duo
            :default-family "Iosevka Comfy Duo")
+          (font-iosevka-fixed
+           :default-family "Iosevka Fixed SS03")
           (font-fira-code
-           :default-family "FiraCode Nerd Font Mone"
+           :default-family "FiraCode Nerd Font Mono"
            :variable-pitch-family "FiraCode Nerd Font Propo")
+          (font-victor-mono
+           :default-family "VictorMono Nerd Font Mono"
+           :variable-pitch-family "VictorMono Nerd Font Mono"
+           :default-weight medium
+           :default-slant normal
+           :default-width normal
+           :default-height 140)
+          (font-jetbrains-mono
+           :default-family "JetbrainsMono Nerd Font"
+           :variable-pitch-family "JetbrainsMono Nerd Font Propo"
+           :default-weight medium
+           :default-slant normal
+           :default-width normal
+           :default-height 140)
+          (font-sf-mono
+           :default-family "SF Mono"
+           :variable-pitch-family "SF Mono"
+           :default-weight medium
+           :default-slant normal
+           :default-width normal
+           :default-height 140)
+          (font-hack
+           :default-family "Hack Nerd Font"
+           :variable-pitch-family "Hack Nerd Font"
+           :default-weight medium
+           :default-slant normal
+           :default-width normal
+           :default-height 160)
+          (font-ibm-plex
+           :default-family "IBM Plex Mono"
+           :variable-pitch-family "IBM Plex Serif"
+           :default-weight medium
+           :default-slant normal
+           :default-width normal
+           :default-height 140)
 
           ;; font sizes
           (size-xs
@@ -178,7 +216,7 @@
            :line-spacing 0.3)
           ))
 
-  (fontaine-set-preset (or (fontaine-restore-latest-preset) 'rody))
+  (fontaine-set-preset (or (fontaine-restore-latest-preset) 'font-rody))
   (fontaine-mode 1))
 
 

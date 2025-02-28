@@ -10,7 +10,7 @@
 
 (use-package eldoc-box
   :ensure t
-  :hook (eglot-managed-mode . eldoc-box-hover-at-point-mode))
+  :bind (("C-h ." . eldoc-box-help-at-point)))
 
 (provide 'init-eldoc)
 ;;; init-eldoc.el ends here

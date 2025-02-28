@@ -8,5 +8,10 @@
   :config
   (setq Man-notify-method 'aggressive))
 
+(use-package woman
+  :ensure nil
+  :commands (woman)
+  :bind (("C-c h m" . woman)))
+
 (provide 'init-man)
 ;;; init-man.el ends here

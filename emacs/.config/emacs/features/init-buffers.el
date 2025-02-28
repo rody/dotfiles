@@ -4,8 +4,7 @@
 
 (use-package ibuffer
   :ensure nil
-  :hook ((ibuffer-mode . hl-line-mode)
-         (ibuffer-mode . ibuffer-auto-mode))
+  :hook ((ibuffer-mode . ibuffer-auto-mode))
   :bind (("C-x C-b" . #'ibuffer)
          :map ibuffer-mode-map
          ("{" . #'ibuffer-backwards-next-marked)

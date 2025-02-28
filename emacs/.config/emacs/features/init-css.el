@@ -4,8 +4,9 @@
 
 (use-package css-ts-mode
   :ensure nil
-  :mode (("\\.css\\'" . css-ts-mode))
-  )
+  :ensure-system-package (vscode-css-language-server)
+  :hook ((css-ts-mode . eglot-ensure))
+  :mode (("\\.css\\'" . css-ts-mode)))
 
 (provide 'init-css)
 ;;; init-css.el ends here
