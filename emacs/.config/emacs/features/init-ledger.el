@@ -9,7 +9,7 @@
   :custom
   (ledger-clear-whole-transactions 1)
   (ledger-reports '(("bal this month" "%(binary) -f %(ledger-file) bal -p %(month) -S amount")
-                    ("bal 2020"       "%(binary) -f %(ledger-file) bal -p 2020")
+                    ("bal 2025"       "%(binary) -f %(ledger-file) bal -p 2025")
                     ("bal"            "%(binary) -f %(ledger-file) bal")
                     ("reg monthly"    "%(binary) -f %(ledger-file) reg -M")
                     ("reg"            "%(binary) -f %(ledger-file) reg")

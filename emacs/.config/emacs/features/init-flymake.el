@@ -13,7 +13,6 @@
   ;; wait 5 seconds after I stop typing to run flymake
   (setq flymake-no-changes-timeout 5)
   (setq flymake-show-diagnostics-at-end-of-line nil) ;; other option: 'short
-  :config
   (add-to-list 'display-buffer-alist
                '("\\*flymake diagnostics" (display-buffer-reuse-window display-buffer-in-side-window)
                  (side . bottom)
