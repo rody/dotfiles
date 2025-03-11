@@ -37,7 +37,8 @@
                                 :hover t
                                 :completion t
                                 :schemaStore (:enable t)
-                                )))
+                                :schemas (Kubernetes ["/**/*.yaml"]
+                                                     ))))
   :hook ((go-ts-mode . rody--eglot-import-and-format-on-save)
          (rust-ts-mode . rody--eglot-format-on-save)
          (json-ts-mode . rody--eglot-format-on-save)
@@ -45,7 +46,10 @@
          (templ-ts-mode . rody--eglot-format-on-save)
          (typescript-ts-mode . eglot-ensure)
          (css-ts-mode . eglot-ensure)
-         (zig-ts-mode . rody--eglot-format-on-save))
+         (zig-ts-mode . rody--eglot-format-on-save)
+         (yaml-mode . eglot-ensure)
+         (yaml-ts-mode . eglot-ensure))
+
   :config
   (add-to-list 'eglot-server-programs
                '(terraform-mode "terraform-ls" "serve"))
@@ -61,6 +65,10 @@
 (use-package consult-eglot-embark
   :ensure t
   :after (consult-eglot embark))
+
+;; use tempel instead of yasnippet
+;; (use-package eglot-tempel
+;;   :hook (eglot-managed-mode . eglot-tempel-mode))
 
 (provide 'init-eglot)
 ;;; init-eglot.el ends here
