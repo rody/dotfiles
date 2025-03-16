@@ -20,7 +20,8 @@
     "Setup meow bindings."
     (meow-motion-overwrite-define-key
      '("j" . meow-next)
-     '("k" . meow-prev))
+     '("k" . meow-prev)
+     '("<escape>" . keyboard-quit))
     (meow-leader-define-key
      ;; SPC j/k will run the original command in MOTION state.
      '("j" . "H-j")

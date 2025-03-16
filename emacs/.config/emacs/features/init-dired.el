@@ -20,7 +20,11 @@
   (setq dired-auto-revert-buffer t)
   (setq dired-create-destination-dir 'always)
   (setq dired-listing-switches
-        "-l --human-readable --group-directories-first --no-group"))
+        "-l --human-readable --group-directories-first --no-group")
+  (when (string= system-type "darwin")
+    (setq dired-use-ls-dired t
+          insert-directory-program "gls"
+          dired-listing-switches "-aBhl --group-directories-first")))
 
 (use-package dired-subtree
   :ensure t

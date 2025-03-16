@@ -130,6 +130,7 @@
 (rody--require-with-time 'init-emmet)
 (rody--require-with-time 'init-css)
 (rody--require-with-time 'init-typst)
+(rody--require-with-time 'init-d2)
 
 ;; AI/LLM
 (rody--require-with-time 'init-gptel)

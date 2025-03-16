@@ -5,7 +5,9 @@
 (use-package compile
   :ensure nil
   :bind (("C-c c c" . compile)
-         ("C-c c C" . recompile))
+         ("C-c c r" . recompile)
+         :map compilation-mode-map
+         ("<escape>". keyboard-quit))
   :commands (compile recompile)
   :custom
   (compilation-scroll-output t)
@@ -26,6 +28,7 @@
 (use-package compile-multi
   :ensure t
   :after compile
+  :bind (("C-c c C" . compile-multi))
   :config
   (setq compile-multi-config '((go-ts-mode
                                 ("go:vet" . "go vet")
