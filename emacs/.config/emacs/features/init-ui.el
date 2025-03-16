@@ -12,16 +12,33 @@
   (setq-default line-spacing 0.3)
 
   ;; scrolling
-  (setq pixel-scroll-precision-use-momentum t)
-  (pixel-scroll-precision-mode t))
-
+  ;;(setq pixel-scroll-precision-use-momentum t)
+  ;;(pixel-scroll-precision-mode t))
+  )
 ;; Set font face height. Value is 1/10pt.
 (set-face-attribute 'default nil
                     :height 140)
 
+
+(use-package tool-bar
+  :ensure nil
+  :config
+  (tool-bar-mode -1))
+
+(use-package scroll-bar
+  :ensure nil
+  :config
+  (scroll-bar-mode -1))
+
+(use-package menu-bar
+  :unless (eq window-system 'ns)
+  :ensure nil
+  :config
+  (menu-bar-mode -1))
+
+
 (use-package frame
   :ensure nil
-  :defer t
   :init
   ;; Mispressing C-z invokes `suspend-frame' (disable).
   (global-unset-key (kbd "C-z"))
@@ -41,7 +58,6 @@
 
 (use-package window
   :ensure nil
-  :defer t
   :custom
   ;; from https://www.masteringemacs.org/article/demystifying-emacs-window-manager
   (switch-to-buffer-obey-display-actions t)
@@ -53,9 +69,9 @@
   (add-to-list 'display-buffer-alist
                '("\\*Async Shell Command\\*"
                  (display-buffer-same-window)))
-  (add-to-list 'display-buffer-alist
-               '("\\magit:"
-                 (display-buffer-same-window)))
+  ;; (add-to-list 'display-buffer-alist
+  ;;              '("\\magit:"
+  ;;                (display-buffer-same-window)))
   (add-to-list 'display-buffer-alist
                '("\\*Help"
                  (display-buffer-same-window)))

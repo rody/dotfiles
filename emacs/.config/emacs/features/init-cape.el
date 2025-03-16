@@ -4,15 +4,7 @@
 
 (use-package cape
   :ensure t
-  :hook ((prog-mode . (lambda()
-                        (add-to-list 'completion-at-point-functions #'cape-file)
-                        (add-to-list 'completion-at-point-functions #'tempel-complete)))
-         (eglot-managed-mode . (lambda()
-                                 (setq-local completion-at-point-functions
-                                             (list
-                                              (cape-capf-super
-                                               #'eglot-completion-at-point)))
-                                 (add-to-list 'completion-at-point-functions #'cape-file))))
+  :demand t
   ;; Bind dedicated completion commands
   ;; Alternative prefix keys: C-c p, M-p, M-+, ...
   :bind (("C-c p p" . completion-at-point) ;; capf
@@ -32,7 +24,11 @@
          ("C-c p ^" . cape-tex)
          ("C-c p &" . cape-sgml)
          ("C-c p r" . cape-rfc1345))
-  )
+
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'tempel-complete))
+
 
 (provide 'init-cape)
 ;;; init-cape.el ends here

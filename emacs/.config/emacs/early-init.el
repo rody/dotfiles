@@ -4,8 +4,8 @@
 
 ;; set the compilation cache fils
 (when (fboundp 'startup-redirect-eln-cache)
- (startup-redirect-eln-cache
-  (convert-standard-filename "~/.cache/emacs/eln-cache")))
+  (startup-redirect-eln-cache
+   (convert-standard-filename "~/.cache/emacs/eln-cache")))
 
 ;; If an `.el' file is newer than its corresponding `.elc', load the `.el'.
 (setq load-prefer-newer t)
@@ -20,12 +20,12 @@
 ;; (from Doom emacs) Premature redisplays can substantially affect
 ;; startup times and produce ugly flashes of unstyled Emacs.
 (setq-default inhibit-redisplay t
-	    inhibit-message t)
+	      inhibit-message t)
 ;; once window setup if finished, re-enable display
 (add-hook 'window-setup-hook
-	(lambda ()
+	  (lambda ()
 	    (setq-default inhibit-redisplay nil
-			inhibit-message nil)
+			  inhibit-message nil)
 	    (redisplay)))
 
 ;; Prevent unwanted runtime builds in gccemacs (native-comp)
@@ -41,9 +41,9 @@
 ;; (push '(vertical-scroll-bars) default-frame-alist)
 
 ;; Disable GUI elements
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
+;; (tool-bar-mode -1)
+;; (menu-bar-mode -1)
+;; (scroll-bar-mode -1)
 (tooltip-mode -1)
 (setq inhibit-splash-screen t)
 (setq use-file-dialog nil)

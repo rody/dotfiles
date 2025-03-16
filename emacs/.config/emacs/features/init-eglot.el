@@ -22,7 +22,8 @@
          ("C-c c l f" . eglot-format))
   :init
   (setq-default eglot-workspace-configuration
-                '(:gopls (
+                '(
+                  :gopls (
                           :usePlaceholders t
                           :gofumpt t
                           :matcher "Fuzzy"
@@ -30,15 +31,15 @@
                                      :staticcheck t
                                      :unreachable t
                                      :unusedvariable t))
-                         :yaml (
-                                :format (
-                                         :enable t)
-                                :validate t
-                                :hover t
-                                :completion t
-                                :schemaStore (:enable t)
-                                :schemas (Kubernetes ["/**/*.yaml"]
-                                                     ))))
+                  :yaml (
+                         :format (
+                                  :enable t)
+                         :validate t
+                         :hover t
+                         :completion t
+                         :schemaStore (:enable t)
+                         :schemas (Kubernetes ["/**/*.yaml"]
+                                              ))))
   :hook ((go-ts-mode . rody--eglot-import-and-format-on-save)
          (rust-ts-mode . rody--eglot-format-on-save)
          (json-ts-mode . rody--eglot-format-on-save)

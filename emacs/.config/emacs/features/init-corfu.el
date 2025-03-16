@@ -4,23 +4,26 @@
 
 (use-package corfu
   :ensure t
-  :hook ((after-init . global-corfu-mode)
-         (corfu-mode . corfu-popupinfo-mode))
-  :bind (:map corfu-map ("<tab>" . corfu-complete))
-  :config
-  (setq tab-always-indent 'complete)
+  :demand t
+  :bind (("C-<tab>" . #'completion-at-point)
+         :map corfu-map
+         ("SPC" . corfu-insert-separator)
+         ("[tab]" . corfu-complete))
+  :init
+  (setq text-mode-ispell-word-completion nil)
   (setq corfu-popupinfo-delay '(1.25 . 0.5))
-  (setq corfu-preview-current nil)
+  (setq corfu-preview-current t)
   (setq corfu-min-width 20)
-
+  (setq text-mode-ispell-word-completion nil)
+  (setq read-extended-command-predicate #'command-completion-default-include-p)
   (setq corfu-cycle t)
   (setq corfu-echo-documentation t)
   (setq corfu-scroll-margin 5)
-  ;; Sort by input history (no need to modify `corfu-sort-function').
-  ;;(with-eval-after-load 'savehist
-  ;;(corfu-history-mode 1)
-  ;;(add-to-list 'savehist-additional-variables 'corfu-history))
-  )
+  (setq corfu-auto nil)
+  ;; enable completion in minibuffer where vertico is not used
+  (setq global-corfu-minibuffer t)
+  (global-corfu-mode)
+  (corfu-popupinfo-mode))
 
 (provide 'init-corfu)
 ;;; init-corfu.el ends here

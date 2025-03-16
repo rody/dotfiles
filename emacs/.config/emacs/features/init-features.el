@@ -28,6 +28,7 @@
 (rody--require-with-time 'init-no-littering)
 (rody--require-with-time 'init-mac)
 (rody--require-with-time 'init-ui)
+(rody--require-with-time 'init-mule)
 
 ;; Load before remaining. Useful for debugging init.el issues.
 (rody--require-with-time 'init-maintenance)
@@ -45,6 +46,7 @@
 (rody--require-with-time 'init-help)
 (rody--require-with-time 'init-imenu)
 (rody--require-with-time 'init-minibuffer)
+(rody--require-with-time 'init-hippie-expand)
 (rody--require-with-time 'init-corfu)
 (rody--require-with-time 'init-cape)
 (rody--require-with-time 'init-consult)

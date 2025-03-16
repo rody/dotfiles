@@ -18,7 +18,7 @@
     (add-to-list 'auth-sources 'macos-keychain-generic)))
 
 
-(use-package emacs
+(use-package ns-win
   :ensure nil
   :if (eq window-system 'ns)
   :init
@@ -39,12 +39,14 @@
 
   ;; Transparent titlebar on macOS.
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-  (add-to-list 'default-frame-alist '(ns-appearance . dark))
-  ;; Want menu bar on macOS GUI.
-  (use-package menu-bar
-    :ensure nil
-    :init
-    (menu-bar-mode +1)))
+  ;;(add-to-list 'default-frame-alist '(ns-appearance . dark))
+  )
+
+(use-package menu-bar
+  :ensure nil
+  :if (eq window-system 'ns)
+  :init
+  (menu-bar-mode +1))
 
 (provide 'init-mac)
 ;;; init-mac.el ends here

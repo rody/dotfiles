@@ -8,6 +8,7 @@
   :bind (("M-u" . upcase-dwim)
          ("M-l" . downcase-dwim))
   :custom
+  (tab-always-indent 'complete)
   (bookmark-save-flag 1)
   (byte-compile-warnings nil)
   (use-short-answers t)
