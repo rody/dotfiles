@@ -18,7 +18,6 @@
 ;; Modus Themes
 (use-package modus-themes
   :ensure t
-  :defer t
   :custom
   (modus-themes-italic-constructs t)
   (modus-themes-bold-constructs t)
@@ -37,8 +36,8 @@
   ;;    (agenda-date . (1.3))
   ;;    (agenda-structure . (variable-pitch light 1.8))
   ;;    (t . (1.1))))
-  ;; :init
-  ;; (load-theme 'modus-vivendi-tinted t)
+  :init
+  (load-theme 'modus-vivendi-tinted t)
   )
 
 (provide 'init-modus-theme)

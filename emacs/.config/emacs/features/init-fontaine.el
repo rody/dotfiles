@@ -145,6 +145,9 @@
            :line-spacing nil)
 
           ;; alternate fonts
+          (font-maple
+           :default-family "Maple Mono NF"
+           :variable-pitch-family "Maple Mono NF")
           (font-iosevka-comfy
            :default-family "Iosevka Comfy"
            :variable-pitch-family "Iosevka Comfy")
