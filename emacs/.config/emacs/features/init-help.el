@@ -2,24 +2,25 @@
 ;;; Commentary:
 ;;; Code:
 
+(use-package help
+  :ensure nil
+  :config
+  (setq help-window-select 'always)
+  (setq help-window-keep-selected t)
+  (add-to-list 'display-buffer-alist
+               '("*Help*"
+                 (display-buffer-reuse-window display-buffer-in-side-window)
+                 (side . right)
+                 (window-width . 100))))
+
+
 (use-package helpful
   :ensure t
   :bind  (("C-h f" . helpful-callable)
           ("C-h v" . helpful-variable)
           ("C-h k" . helpful-key))
   :config
-  (setq help-window-select t)
-  ;;(setq helpful-switch-buffer-function #'ar/helpful-switch-to-buffer)
-  :init
-  ;; from https://d12frosted.io/posts/2019-06-26-emacs-helpful.html
-  (defun ar/helpful-switch-to-buffer (buffer-or-name)
-    "Switch to helpful BUFFER-OR-NAME.
-
-The logic is simple, if we are currently in the helpful buffer,
-reuse it's window, otherwise create new one."
-    (if (eq major-mode 'helpful-mode)
-        (switch-to-buffer buffer-or-name)
-      (pop-to-buffer buffer-or-name))))
+  (setq helpful-switch-buffer-function #'pop-to-buffer))
 
 (use-package tldr
   :ensure t
@@ -31,7 +32,12 @@ reuse it's window, otherwise create new one."
   :ensure t
   :bind (("C-h D" . devdocs-lookup))
   :config
-  (setq devdocs-data-dir (concat rody-emacs-data-directory "devdocs")))
+  (setq devdocs-data-dir (concat rody-emacs-data-directory "devdocs"))
+  (add-to-list 'display-buffer-alist
+               '("*devdocs*"
+                 (display-buffer-reuse-window display-buffer-in-side-window)
+                 (side . right)
+                 (window-width . 100))))
 
 (provide 'init-help)
 ;;; init-help.el ends here
