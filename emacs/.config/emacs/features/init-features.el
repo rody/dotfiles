@@ -135,6 +135,7 @@
 (rody--require-with-time 'init-d2)
 
 ;; AI/LLM
+(rody--require-with-time 'init-llm)
 (rody--require-with-time 'init-gptel)
 (rody--require-with-time 'init-ollama-buddy)
 

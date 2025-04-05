@@ -18,6 +18,15 @@
   ;; from: https://blog.thomasheartman.com/posts/improve-your-workflow-with-forge
   (ghub-use-workaround-for-emacs-bug 'force))
 
+(use-package forge-llm
+  :ensure t
+  :after (forge llm)
+  :config
+  (require 'llm-ollama)
+  (setq forge-llm-llm-provider
+        (make-llm-ollama :embedding-model "mistral:latest" :chat-model "mistral:latest" :default-chat-temperature 0.1))
+  (forge-llm-setup))
+
 (use-package git-timemachine
   :ensure t
   :bind (("C-c g t" . git-timemachine)))
