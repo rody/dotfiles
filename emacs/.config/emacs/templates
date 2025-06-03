@@ -214,3 +214,95 @@ json-ts-mode json-mode
 ;; mode: lisp-data
 ;; outline-regexp: "[a-z]"
 ;; End:
+
+;; css ----------------------------------------------------------------------------
+css-mode css-ts-mode
+
+(reset "/* css reset */
+*,*::before,*::after {
+    box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit; /* Get rid of all the font size and height */
+}
+
+html {
+  color-scheme: dark light; /* Default dark */
+  hanging-punctuation: first last; /* Not supported in Chrome */
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Media responsive */
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty; /* Prevents orphans on lines */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :has(:target) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 3rem;
+  }
+}
+
+/* end of reset */
+")
+
+(root ":root {
+  --font-sans: system-ui, sans-serif;
+  --font-serif: serif;
+
+  --clr-accent: blue;
+  --clr-error: red;
+  --clr-success: green;
+  --clr-warning: yellow;
+}")
+
+;; re-enable the typographic flow after a reset
+(flow ".flow > * + * {
+  margin-top: var(--flow-spacer, 1em);
+}")
+
+
+;; form
+(form "/* forms */
+
+input {
+  accent-color: var(--clr-accent);
+}
+
+/* input changed and valid */
+input:user-valid, input:not(placeholder-shown):valid {
+  outline-color: var(--clr-success, green);
+}
+
+/* input changed and not valid */
+input:user-invalid, input:not(placeholder-shown):invalid {
+  outline-color: var(--clr-error, red);
+}
+
+input:focus {
+  outline: var(--clr-accent, blue);
+}
+
+label {
+  text-transform: uppercase;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+}
+
+")
